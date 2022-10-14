@@ -1,9 +1,10 @@
-import { TodoListMain } from "./pages";
+// import { TodoListMain } from "./pages";
+import Router from "./shared/Router";
 
 function App() {
   return (
     <div className="App">
-      <TodoListMain/>
+      <Router/>
     </div>
   );
 }
