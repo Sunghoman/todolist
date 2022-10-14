@@ -21,7 +21,6 @@ export const List = () => {
                 <li>Title : { todo.title }</li>
                 <li>Body : { todo.body }</li>
                 <li>Date : { todo.date }</li>
-                <li>Time : { todo.time }</li>
                 <button onClick={() => removeTodo(todo.id)}>이거 누르면 삭제됨(진짜임)</button>
                 <hr/>
               </div>
