@@ -45,7 +45,3 @@ export const todoSlice = createSlice({
     },
   },
 });
-
-// removeTodo: (state, { payload }) => {
-//   return state.filter((todo) => todo.id !== payload);
-// },
