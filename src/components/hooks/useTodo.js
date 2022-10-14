@@ -9,7 +9,6 @@ export const useTodo = () => {
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
   const day = today.getDate();
-  const time = today.getHours() + ":" + today.getMinutes();
   
   // Create Root TodoItem
   const [todo, setTodo] = useState({
@@ -18,7 +17,6 @@ export const useTodo = () => {
     body: "",
     status: false,
     date: year + "-" + month + "-" + day,
-    time: time,
   });
 
   // get Inputs for TodoItem

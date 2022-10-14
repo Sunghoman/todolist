@@ -9,7 +9,6 @@ export const todoSlice = createSlice({
       body: "이게 왜 안될까요 ㅠㅠ",
       status: false,
       date: "2022-10-13",
-      time: "10:04",
       tag: "react"
     },
     {
@@ -18,7 +17,6 @@ export const todoSlice = createSlice({
       body: "정말 너무 어려워 티비",
       status: false,
       date: "2022-10-13",
-      time: "10:04",
       tag: "spring"
     },
     {
@@ -27,7 +25,6 @@ export const todoSlice = createSlice({
       body: "야옹 야옹 전 이제 사파리로 개발해야해요",
       status: false,
       date: "2022-10-13",
-      time: "10:04",
       tag: "react"
     },
   ],
