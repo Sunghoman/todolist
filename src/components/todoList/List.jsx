@@ -13,6 +13,7 @@ export const List = () => {
       <h4>새로 적으면 여기 나타남</h4>
       <ul>
         {todoList.map((todo) => {
+          console.log(todo);
           return (
             <div key={todo.id}>
               <li>ID : {todo.id}</li>
