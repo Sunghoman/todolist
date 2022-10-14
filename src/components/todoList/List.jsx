@@ -1,8 +1,7 @@
-import { useSelector } from "react-redux"
-import { useChangeTodo } from "../hooks/useChangeTodo"
+import { useSelector } from "react-redux";
+import { useChangeTodo } from "../hooks/useChangeTodo";
 
 export const List = () => {
-
   const todoList = useSelector((state) => state.todoList);
   console.log(todoList);
 
@@ -11,7 +10,7 @@ export const List = () => {
 
   return (
     <div>
-      <hr/>
+      <hr />
       <h4>새로 적으면 여기 나타남</h4>
       <ul>
         { todoList.map((todo) => {
@@ -29,8 +28,6 @@ export const List = () => {
           }) 
         }
       </ul>
-
     </div>
-  )
-}
-
+  );
+};
