@@ -12,5 +12,20 @@ export const useChangeTodo = () => {
   const toggleTodo = (id) => {
     dispatch({ type: "todoList/toggleTodo", payload: id });
   };
-  return { removeTodo, toggleTodo };
+
+  // Resiore an item from TodoList
+  const restoreTodo = (id) => {
+    dispatch({ type: "todoList/restoreTodo", payload: id });
+  };
+
+  // cencle an item from TodoList
+  const cencleTodo = (id) => {
+    dispatch({ type: "todoList/cencleTodo", payload: id });
+  };
+
+  // deleteAll an item from TodoList
+  const deleteAllTodo = (id) => {
+    dispatch({ type: "todoList/deleteAllTodo", payload: id });
+  };
+  return { removeTodo, toggleTodo, restoreTodo, cencleTodo, deleteAllTodo };
 };
