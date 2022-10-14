@@ -21,7 +21,6 @@ export const List = () => {
                   <li>Title: {todo.title}</li>
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
-                  <li>Time: {todo.time}</li>
 
                   <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => toggleTodo(todo.id)}>완료</button>
@@ -48,7 +47,6 @@ export const List = () => {
                   <li>Title: {todo.title}</li>
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
-                  <li>Time: {todo.time}</li>
 
                   <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => cencleTodo(todo.id)}>취소</button>
@@ -78,7 +76,6 @@ export const List = () => {
                   <li>Title: {todo.title}</li>
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
-                  <li>Time: {todo.time}</li>
 
                   <button onClick={() => restoreTodo(todo.id)}>복원</button>
 
