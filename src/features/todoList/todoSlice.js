@@ -34,7 +34,9 @@ export const todoSlice = createSlice({
       return [...state, payload];
     },
     removeTodo: (state, { payload }) => {
-      return state.filter((todo) => todo.id !== payload);
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Trash" } : todo
+      );
     },
     toggleTodo: (state, { payload }) => {
       return state.map((todo) =>
@@ -43,3 +45,7 @@ export const todoSlice = createSlice({
     },
   },
 });
+
+// removeTodo: (state, { payload }) => {
+//   return state.filter((todo) => todo.id !== payload);
+// },
