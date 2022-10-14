@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 
-export const useChangeTodo = () => {  
-
+export const useChangeTodo = () => {
   const dispatch = useDispatch();
-  
+
   // Remove an item from TodoList
   const removeTodo = (id) => {
     dispatch({ type: "todoList/removeTodo", payload: id });
-  }
+  };
 
-  return { removeTodo };
-
-}
+  // Toggle an item from TodoList
+  const toggleTodo = (id) => {
+    dispatch({ type: "todoList/toggleTodo", payload: id });
+  };
+  return { removeTodo, toggleTodo };
+};

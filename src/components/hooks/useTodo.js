@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 export const useTodo = () => {
-
   const dispatch = useDispatch();
 
   const today = new Date();
@@ -10,10 +9,11 @@ export const useTodo = () => {
   const month = today.getMonth() + 1;
   const day = today.getDate();
   const time = today.getHours() + ":" + today.getMinutes();
-  
+
   // Create Root TodoItem
   const [todo, setTodo] = useState({
     id: null,
+    tag: "",
     title: "",
     body: "",
     status: false,
@@ -21,12 +21,17 @@ export const useTodo = () => {
     time: time,
   });
 
+  const handleChange = (e) => {
+    setTodo((prevState) => {
+      return { ...prevState, tag: e.target.value };
+    });
+  };
   // get Inputs for TodoItem
   const getInputs = (e) => {
     const { name, value } = e.target;
     setTodo((prevState) => {
       return {
-       ...prevState,
+        ...prevState,
         [name]: value,
         id: Math.floor(Math.random() * 100),
         status: false,
@@ -36,13 +41,13 @@ export const useTodo = () => {
 
   // Add a new item into TodoList
   const addTodo = () => {
-    if ( todo.title && todo.body ) {
+    if (todo.title && todo.body) {
       dispatch({ type: "todoList/addTodo", payload: todo });
       setTodo((prevState) => {
         return {
-         ...prevState,
-         title: "",
-         body: "",
+          ...prevState,
+          title: "",
+          body: "",
         };
       });
     }
@@ -52,6 +57,6 @@ export const useTodo = () => {
     todo,
     getInputs,
     addTodo,
+    handleChange,
   };
-
 };

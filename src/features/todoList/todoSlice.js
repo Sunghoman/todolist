@@ -10,7 +10,7 @@ export const todoSlice = createSlice({
       status: false,
       date: "2022-10-13",
       time: "10:04",
-      tag: "react"
+      tag: "react",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export const todoSlice = createSlice({
       status: false,
       date: "2022-10-13",
       time: "10:04",
-      tag: "spring"
+      tag: "spring",
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export const todoSlice = createSlice({
       status: false,
       date: "2022-10-13",
       time: "10:04",
-      tag: "react"
+      tag: "react",
     },
   ],
   reducers: {
@@ -37,6 +37,11 @@ export const todoSlice = createSlice({
     },
     removeTodo: (state, { payload }) => {
       return state.filter((todo) => todo.id !== payload);
-    }
-  }
+    },
+    toggleTodo: (state, { payload }) => {
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Done" } : todo
+      );
+    },
+  },
 });
