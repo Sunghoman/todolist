@@ -42,7 +42,6 @@ export const useTodo = () => {
     if (todo.title && todo.body) {
       dispatch({ type: "todoList/addTodo", payload: todo });
       setTodo((prevState) => {
-        console.log(todo);
         return {
           ...prevState,
           title: "",
