@@ -15,6 +15,7 @@ export const List = () => {
         <ul>
           {todoList.map((todo) => {
             if (todo.status === "Working") {
+              console.log(todo);
               return (
                 <div key={todo.id}>
                   <li>ID: {todo.id}</li>
