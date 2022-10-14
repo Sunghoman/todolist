@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 import { TodoBody } from "../../style/list_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
+import { useNavigate } from "react-router-dom";
 
 export const List = () => {
   const todoList = useSelector((state) => state.todoList);
   const { removeTodo, toggleTodo, restoreTodo, cencleTodo, deleteAllTodo } =
     useChangeTodo();
+    
   return (
     <TodoBody>
       <div>
@@ -25,6 +27,7 @@ export const List = () => {
 
                   <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => toggleTodo(todo.id)}>완료</button>
+                  <button onClick={() => {navigate("/detail/" + todo.id)}}>상세페이지</button>
 
                   <hr />
                 </div>
@@ -79,7 +82,10 @@ export const List = () => {
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
 
+
                   <button onClick={() => restoreTodo(todo.id)}>복원</button>
+                  <button onClick={() => removeTodo(todo.id)}>삭제</button>
+
 
                   <hr />
                 </div>
