@@ -9,7 +9,8 @@ export const todoSlice = createSlice({
       body: "이게 왜 안될까요 ㅠㅠ",
       status: false,
       date: "2022-10-13",
-      tag: "react"
+      tag: "react",
+
     },
     {
       id: 2,
@@ -17,7 +18,7 @@ export const todoSlice = createSlice({
       body: "정말 너무 어려워 티비",
       status: false,
       date: "2022-10-13",
-      tag: "spring"
+      tag: "spring",
     },
     {
       id: 3,
@@ -25,7 +26,7 @@ export const todoSlice = createSlice({
       body: "야옹 야옹 전 이제 사파리로 개발해야해요",
       status: false,
       date: "2022-10-13",
-      tag: "react"
+      tag: "react",
     },
   ],
   reducers: {
@@ -34,6 +35,11 @@ export const todoSlice = createSlice({
     },
     removeTodo: (state, { payload }) => {
       return state.filter((todo) => todo.id !== payload);
-    }
-  }
+    },
+    toggleTodo: (state, { payload }) => {
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Done" } : todo
+      );
+    },
+  },
 });

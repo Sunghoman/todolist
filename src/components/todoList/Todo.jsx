@@ -1,16 +1,23 @@
-import { useTodo } from "../hooks/useTodo"
-
+import { useTodo } from "../hooks/useTodo";
 
 export const Todo = () => {
-
-  const { todo, getInputs, addTodo } = useTodo();
+  const { todo, getInputs, addTodo, handleChange } = useTodo();
 
   const { title, body } = todo;
-
   return (
-    <div>
-      <hr/>
-      <h1>투두리스트임</h1>
+    <>
+      <hr />
+      <h1>
+        TODO LIST
+        <button>All</button>
+        <button>Active</button>
+        <button>Completed</button>
+      </h1>
+      <select name="tag" onChange={handleChange}>
+        <option value="">--Choose and option--</option>
+        <option value="react">React</option>
+        <option value="spring">Spring</option>
+      </select>
       <input
         id="title"
         type="text"
@@ -27,11 +34,7 @@ export const Todo = () => {
         value={body}
         onChange={getInputs}
       />
-      <button 
-        onClick={addTodo}
-      >
-        이거 누르면 Todo 추가됨 (진짜임)
-      </button>
-    </div>
-  )
-}
+      <button onClick={addTodo}>추가</button>
+    </>
+  );
+};
