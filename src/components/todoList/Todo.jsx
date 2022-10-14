@@ -21,7 +21,7 @@ export const Todo = () => {
         </ButtonSet>
       </TitleAndButtonPosition>
       <select name="tag" onChange={handleChange}>
-        <option value="">--</option>
+        <option value="">---</option>
         <option value="react">React</option>
         <option value="spring">Spring</option>
       </select>
