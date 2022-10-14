@@ -7,25 +7,26 @@ export const todoSlice = createSlice({
       id: 1,
       title: "리덕스 오류 질문입니다.",
       body: "이게 왜 안될까요 ㅠㅠ",
-      status: false,
+      status: "Working",
       date: "2022-10-13",
-      tag: "react"
+      tag: "react",
+
     },
     {
       id: 2,
       title: "스프링 질문티비",
       body: "정말 너무 어려워 티비",
-      status: false,
+      status: "Working",
       date: "2022-10-13",
-      tag: "spring"
+      tag: "spring",
     },
     {
       id: 3,
       title: "리액트 console.log()가 안찍혀요",
       body: "야옹 야옹 전 이제 사파리로 개발해야해요",
-      status: false,
+      status: "Working",
       date: "2022-10-13",
-      tag: "react"
+      tag: "react",
     },
   ],
   reducers: {
@@ -33,7 +34,27 @@ export const todoSlice = createSlice({
       return [...state, payload];
     },
     removeTodo: (state, { payload }) => {
-      return state.filter((todo) => todo.id !== payload);
-    }
-  }
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Trash" } : todo
+      );
+    },
+    toggleTodo: (state, { payload }) => {
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Done" } : todo
+      );
+    },
+    restoreTodo: (state, { payload }) => {
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Working" } : todo
+      );
+    },
+    cencleTodo: (state, { payload }) => {
+      return state.map((todo) =>
+        todo.id === payload ? { ...todo, status: "Working" } : todo
+      );
+    },
+    deleteAllTodo: (state) => {
+      return state.filter((todo) => todo.status !== "Trash");
+    },
+  },
 });
