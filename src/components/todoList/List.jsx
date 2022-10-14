@@ -1,16 +1,17 @@
 import { useSelector } from "react-redux";
+import { TodoBody } from "../../style/list_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
 
 export const List = () => {
   const todoList = useSelector((state) => state.todoList);
   const { removeTodo, toggleTodo, restoreTodo, cencleTodo, deleteAllTodo } =
     useChangeTodo();
-  console.log(todoList);
   return (
-    <>
+    <TodoBody>
       <div>
         <hr />
         <h4>해야할 일</h4>
+        <hr />
         <ul>
           {todoList.map((todo) => {
             if (todo.status === "Working") {
@@ -65,6 +66,7 @@ export const List = () => {
         <h4>
           휴지통
           <button onClick={() => deleteAllTodo()}>전체 삭제</button>
+          <hr />
         </h4>
         <ul>
           {todoList.map((todo) => {
@@ -88,6 +90,6 @@ export const List = () => {
           })}
         </ul>
       </div>
-    </>
+    </TodoBody>
   );
 };

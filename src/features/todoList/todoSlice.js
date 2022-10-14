@@ -10,7 +10,6 @@ export const todoSlice = createSlice({
       status: "Working",
       date: "2022-10-13",
       tag: "react",
-
     },
     {
       id: 2,

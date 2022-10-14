@@ -1,20 +1,27 @@
-import { Title } from "../../style/todo_styled";
 import { useTodo } from "../hooks/useTodo";
+import {
+  ButtonSet,
+  Title,
+  TitleAndButtonPosition,
+  TodoBody,
+} from "../../style/todo_styled";
 
 export const Todo = () => {
   const { todo, getInputs, addTodo, handleChange } = useTodo();
 
   const { title, body } = todo;
   return (
-    <>
-      <Title>StackOverFlow</Title>
-      <div>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
-      </div>
+    <TodoBody>
+      <TitleAndButtonPosition>
+        <Title>StackOverFlow</Title>
+        <ButtonSet>
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+        </ButtonSet>
+      </TitleAndButtonPosition>
       <select name="tag" onChange={handleChange}>
-        <option value="">--Choose and option--</option>
+        <option value="">--</option>
         <option value="react">React</option>
         <option value="spring">Spring</option>
       </select>
@@ -35,6 +42,6 @@ export const Todo = () => {
         onChange={getInputs}
       />
       <button onClick={addTodo}>추가</button>
-    </>
+    </TodoBody>
   );
 };
