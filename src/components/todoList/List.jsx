@@ -21,7 +21,6 @@ export const List = () => {
                   <li>Title: {todo.title}</li>
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
-                  <li>Time: {todo.time}</li>
 
                   <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => toggleTodo(todo.id)}>완료</button>
@@ -48,7 +47,32 @@ export const List = () => {
                   <li>Title: {todo.title}</li>
                   <li>Body: {todo.body}</li>
                   <li>Date: {todo.date}</li>
-                  <li>Time: {todo.time}</li>
+
+                  <button onClick={() => removeTodo(todo.id)}>삭제</button>
+                  <button onClick={() => toggleTodo(todo.id)}>취소</button>
+
+                  <hr />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </ul>
+      </div>
+      <div>
+        <hr />
+        <h4>스레기통</h4>
+        <ul>
+          {todoList.map((todo) => {
+            if (todo.status === "Trash") {
+              return (
+                <div key={todo.id}>
+                  <li>ID: {todo.id}</li>
+                  <li>Tag: {todo.tag}</li>
+                  <li>Title: {todo.title}</li>
+                  <li>Body: {todo.body}</li>
+                  <li>Date: {todo.date}</li>
 
                   <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => cencleTodo(todo.id)}>취소</button>
