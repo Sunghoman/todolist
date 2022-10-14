@@ -7,6 +7,7 @@ export const List = () => {
   console.log(todoList);
 
   const { removeTodo } = useChangeTodo();
+  console.log("야호");
 
   return (
     <div>
