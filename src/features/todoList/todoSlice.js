@@ -39,4 +39,4 @@ export const todoSlice = createSlice({
       return state.filter((todo) => todo.id !== payload);
     }
   }
-})
+});
