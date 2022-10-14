@@ -1,27 +1,34 @@
 import { useTodo } from "../hooks/useTodo";
+import {
+  ButtonSet,
+  Title,
+  TitleAndButtonPosition,
+  TodoBody,
+} from "../../style/todo_styled";
 
 export const Todo = () => {
   const { todo, getInputs, addTodo, handleChange } = useTodo();
 
   const { title, body } = todo;
   return (
-    <>
-      <hr />
-      <h1>
-        TODO LIST
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
-      </h1>
+    <TodoBody>
+      <TitleAndButtonPosition>
+        <Title>StackOverFlow</Title>
+        <ButtonSet>
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+        </ButtonSet>
+      </TitleAndButtonPosition>
       <select name="tag" onChange={handleChange}>
-        <option value="">--Choose and option--</option>
+        <option value="">--</option>
         <option value="react">React</option>
         <option value="spring">Spring</option>
       </select>
       <input
         id="title"
         type="text"
-        placeholder="제목 적으셈"
+        placeholder="title"
         name="title"
         value={title}
         onChange={getInputs}
@@ -29,12 +36,12 @@ export const Todo = () => {
       <input
         id="body"
         type="text"
-        placeholder="내용 적으셈"
+        placeholder="content"
         name="body"
         value={body}
         onChange={getInputs}
       />
       <button onClick={addTodo}>추가</button>
-    </>
+    </TodoBody>
   );
 };

@@ -15,7 +15,7 @@ export const useTodo = () => {
     tag: "",
     title: "",
     body: "",
-    status: false,
+    status: "Working",
     date: year + "-" + month + "-" + day,
   });
 
@@ -32,7 +32,7 @@ export const useTodo = () => {
         ...prevState,
         [name]: value,
         id: Math.floor(Math.random() * 100),
-        status: false,
+        status: "Working",
       };
     });
   };
@@ -42,6 +42,7 @@ export const useTodo = () => {
     if (todo.title && todo.body) {
       dispatch({ type: "todoList/addTodo", payload: todo });
       setTodo((prevState) => {
+        console.log(todo);
         return {
           ...prevState,
           title: "",
