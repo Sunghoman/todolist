@@ -5,11 +5,47 @@ import {
   TitleAndButtonPosition,
   TodoBody,
 } from "../../style/todo_styled";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const TodoForm = () => {
-  const { todo, getInputs, addTodo, handleChange } = useTodo();
+  
+  const [todoList, setTodo] = useState({
+    title: "",
+  });
+  const [todos, setTodos] = useState(null);
+  const [targetId, setTargetId] = useState(null);
+  const [editTodo, setEditTodo] = useState({
+    title: "",
+  });
 
+  const fetchTodos = async () => {
+    const { data } = await axios.get("http://localhost:3001/todos");
+    setTodos(data);
+  };
+
+  const onSubmitHandler = (todo) => {
+    axios.post("http://localhost:3001/todos", todo);
+  };
+
+  const onClickDeleteButtonHandler = (todoId) => {
+    axios.delete(`http://localhost:3001/todos/${todoId}`);
+  };
+
+  const onClickEditButtonHandler = (todoId, edit) => {
+    axios.patch(`http://localhost:3001/todos/${todoId}`, edit);
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  console.log(todos)
+
+  const { todo, getInputs, addTodo, handleChange } = useTodo();
   const { title, body } = todo;
+
+  console.log(todoList)
   return (
     <TodoBody>
       <TitleAndButtonPosition>

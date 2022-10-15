@@ -4,6 +4,7 @@ import { useChangeTodo } from "../hooks/useChangeTodo";
 import { useNavigate } from "react-router-dom";
 
 export const List = () => {
+
   const todoList = useSelector((state) => state.todoList);
   const { removeTodo, toggleTodo, restoreTodo, cencleTodo, deleteAllTodo } = useChangeTodo();
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const List = () => {
           <ul>
             {todoList.map((todo) => {
               if (todo.status === "Working") {
-                console.log(todo);
+                // console.log(todo);
                 return (
                   <div key={todo.id}>
                     <li>ID: {todo.id}</li>
