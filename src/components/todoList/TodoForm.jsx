@@ -6,7 +6,7 @@ import {
   TodoBody,
 } from "../../style/todo_styled";
 
-export const Todo = () => {
+export const TodoForm = () => {
   const { todo, getInputs, addTodo, handleChange } = useTodo();
 
   const { title, body } = todo;
