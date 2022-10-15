@@ -9,7 +9,7 @@ export const useTodo = () => {
   const month = today.getMonth() + 1;
   const day = today.getDate();
 
-  // Create Root TodoItem
+  // Create Root TodoItem (Redux)
   const [todo, setTodo] = useState({
     id: null,
     tag: "",

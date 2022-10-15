@@ -1,4 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const initialState = {
+  isLoading: false,
+  error: null,
+  todos: [],
+}
+
+export const __getTodos = createAsyncThunk(
+  "todos/getTodos",
+  async(payload, thunkAPI) => {
+    try {
+      const data = await axios.get("http://localhost:3001/todos");
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+)
+
 
 export const todoSlice = createSlice({
   name: "todoList",
@@ -56,4 +76,20 @@ export const todoSlice = createSlice({
       return state.filter((todo) => todo.status !== "Trash");
     },
   },
+  extraReducers: {
+    [__getTodos.pending]: (state) => {
+      state.isLoading = true; 
+    },
+    [__getTodos.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      console.log("fulfilled 상태 : ", state, action); // Promise가 fulfilled 일 때, dispatch
+    },
+    [__getTodos.rejected]: (state, action) => {
+      state.isLoading = false; 
+      state.e = action.payload;
+    },
+  },
 });
+
+export const {} = todoSlice.actions
+export default todoSlice.reducer;
