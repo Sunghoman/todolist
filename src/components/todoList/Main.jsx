@@ -31,7 +31,7 @@ export const Main =() => {
             이 곳에서 공유하고, 해결 방법을 찾아보세요<br/>
             당신의 고민의 흔적이 다른 사람들을 도울 수 있읍니다.<br/>
           </MainText>    
-          <MainLink to="/list">새 글 작성</MainLink>
+          <MainLink to="/list">이 버튼 옮겨야함(새 글 작성)</MainLink>
         </MainFront>
 
       </MainContainer>
