@@ -6,10 +6,12 @@ import {
   TodoBody,
 } from "../../style/todo_styled";
 
-export const Todo = () => {
+export const TodoForm = () => {
+  
+  // 리덕스
   const { todo, getInputs, addTodo, handleChange } = useTodo();
-
   const { title, body } = todo;
+
   return (
     <TodoBody>
       <TitleAndButtonPosition>
