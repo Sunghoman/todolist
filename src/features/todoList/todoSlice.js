@@ -2,52 +2,27 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
+  todos: [],
   isLoading: false,
   error: null,
-  todos: [],
 }
 
 export const __getTodos = createAsyncThunk(
-  "todos/getTodos",
+  "todoList/getTodos",
   async(payload, thunkAPI) => {
     try {
       const data = await axios.get("http://localhost:3001/todos");
       return thunkAPI.fulfillWithValue(data.data);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 
 export const todoSlice = createSlice({
   name: "todoList",
-  initialState: [
-    {
-      id: 1,
-      title: "리덕스 오류 질문입니다.",
-      body: "이게 왜 안될까요 ㅠㅠ",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "react",
-    },
-    {
-      id: 2,
-      title: "스프링 질문티비",
-      body: "정말 너무 어려워 티비",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "spring",
-    },
-    {
-      id: 3,
-      title: "리액트 console.log()가 안찍혀요",
-      body: "야옹 야옹 전 이제 사파리로 개발해야해요",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "react",
-    },
-  ],
+  initialState,
   reducers: {
     addTodo: (state, { payload }) => {
       return [...state, payload];
@@ -67,7 +42,7 @@ export const todoSlice = createSlice({
         todo.id === payload ? { ...todo, status: "Working" } : todo
       );
     },
-    cencleTodo: (state, { payload }) => {
+    cencelTodo: (state, { payload }) => {
       return state.map((todo) =>
         todo.id === payload ? { ...todo, status: "Working" } : todo
       );
@@ -82,14 +57,15 @@ export const todoSlice = createSlice({
     },
     [__getTodos.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log("fulfilled 상태 : ", state, action); // Promise가 fulfilled 일 때, dispatch
+      state.todos = action.payload;
+      // console.log("fulfilled 상태 : ", state, action); // Promise가 fulfilled 일 때, dispatch
     },
     [__getTodos.rejected]: (state, action) => {
       state.isLoading = false; 
-      state.e = action.payload;
+      state.error = action.payload;
     },
   },
 });
 
-export const {} = todoSlice.actions
+export const { addTodo, removeTodo, toggleTodo, restoreTodo, cancelTodo, deleteAllTodo } = todoSlice.actions
 export default todoSlice.reducer;

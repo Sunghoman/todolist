@@ -5,30 +5,9 @@ import {
   TitleAndButtonPosition,
   TodoBody,
 } from "../../style/todo_styled";
-import { useEffect } from "react";
-// import axios from "axios";
-import { __getTodos } from "../../features/todoList/todoSlice";
-import { useDispatch } from "react-redux";
 
 export const TodoForm = () => {
   
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(__getTodos());
-  }, [dispatch]);
-
-  // JSON server Data Load (GET)
-  // const [todoList, setTodoList] = useState(null);
-  // const fetchTodos = async () => {
-  //   const { data } = await axios.get("http://localhost:3001/todos");
-  //   setTodoList(data);
-  // };
-  // console.log(todoList);
-
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
-
   // 리덕스
   const { todo, getInputs, addTodo, handleChange } = useTodo();
   const { title, body } = todo;
