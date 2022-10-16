@@ -1,0 +1,28 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "리덕스 오류 질문입니다.",
+      "body": "이게 왜 안될까요 ㅠㅠ",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "react"
+    },
+    {
+      "id": 2,
+      "title": "스프링 질문티비",
+      "body": "정말 너무 어려워 티비",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "spring"
+    },
+    {
+      "id": 3,
+      "title": "리액트 console.log()가 안찍혀요",
+      "body": "그거 이미지 때문일 수 있읍니다. by 지엉",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "react"
+    }
+  ]
+}
