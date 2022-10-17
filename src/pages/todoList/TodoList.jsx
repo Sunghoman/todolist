@@ -4,6 +4,7 @@ import GlobalStyles from "../../style/globalstyle";
 import styled from "styled-components";
 
 const TodoList = () => {
+  console.log();
   return (
     <>
       <GlobalStyles />
