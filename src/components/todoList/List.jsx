@@ -1,15 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { H4, Output, TodoListBody } from "../../style/list_styled";
+import { MainLink } from "../../style/main_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 // import axios from "axios";
 import { __getTodos } from "../../features/todoList/todoSlice";
+import styled from "styled-components";
 
 export const List = () => {
+  
   const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } =
     useChangeTodo();
   const navigate = useNavigate();
+  const params = useParams();
+  console.log(params.id);
 
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
@@ -25,34 +30,33 @@ export const List = () => {
   return (
     <>
       <TodoListBody>
-        <table>
-          <H4>해야할 일</H4>
-          <tr>
+        <div>
+          {/* <H4>해야할 일</H4> */}
+          {/* <thead> */}
             {todos.map((todo) => {
-              if (todo.status === "Working") {
+              // if (todo.status === "Working") {
                 // console.log(todo);
                 return (
-                  <div key={todo.id}>
-                    <td>ID: {todo.id}</td>
-                    <td>Tag: {todo.tag}</td>
-                    <td>Title: {todo.title}</td>
-                    <td>Body: {todo.body}</td>
-                    <td>Date: {todo.date}</td>
-
+                  <TodoListItem key={todo.id}>
+                    <div>Tag: {todo.tag}</div>
+                    <div>{todo.title}</div><br/>
+                    <div>{todo.status}</div><br/>
+                    <div>{todo.date}</div><br/>
                     <button onClick={() => removeTodo(todo.id)}>삭제</button>
                     <button onClick={() => toggleTodo(todo.id)}>완료</button>
-                    <button onClick={() => navigate("/detail/" + todo.id)}>
+                    <button onClick={() => navigate("/list/" + todo.id)}>
                       상세보기
                     </button>
-                  </div>
+                  </TodoListItem>
                 );
-              } else {
-                return null;
-              }
+              // } else {
+              //   return null;
+              // }
             })}
-          </tr>
-        </table>
-        <hr />
+          {/* </thead> */}
+        </div>
+        <MainLink to="/editer">새 글 작성하기</MainLink>
+        {/* <hr />
         <table>
           <H4>완료한 일</H4>
           <tr>
@@ -107,9 +111,27 @@ export const List = () => {
             })}
           </tr>
         </table>
-        <hr />
+        <hr /> */}
       </TodoListBody>
-      <Output className="list-output"></Output>
+      <Output className="list-output">
+        {/* { todos[params].body } */}
+        <Outlet></Outlet>
+      </Output>
     </>
   );
 };
+
+const TodoListItem = styled.div`
+  display: flex;
+  width: 24rem;
+  flex-direction: column;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+  &:hover {
+    transform: translateX(3%);
+  }
+`

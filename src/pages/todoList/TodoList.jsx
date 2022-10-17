@@ -1,4 +1,4 @@
-import { TodoForm } from "../../components/todoList/TodoForm";
+// import { TodoForm } from "../../components/todoList/TodoForm";
 import { List } from "../../components/todoList/List";
 import GlobalStyles from "../../style/globalstyle";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ const TodoList = () => {
     <>
       <GlobalStyles />
       <TodoListContainer className="TodoList">
-        <TodoForm />
+        {/* <TodoForm /> */}
         <List />
       </TodoListContainer>
     </>

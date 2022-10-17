@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const TodoListBody = styled.div`
   width: 420px;
+  overflow: scroll;
+  height: 49vh;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const H4 = styled.h4`
   margin: 20px auto;
@@ -14,4 +19,8 @@ export const Output = styled.div`
   height: 540px;
   border-radius: 10px;
   background-color: #f7f9f9;
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
