@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:3001";
 
-export const addTodoListEditerApi = async () => {
+export const getTodoListEditerApi = async () => {
   const response = await axios.get(`${BASE_URL}/editer`);
   console.log(response.data);
 

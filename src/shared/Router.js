@@ -9,10 +9,10 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<TodoMain />} />
         <Route path="/list" element={<TodoList />}>
-          <Route path=":id" element={<TodoDetail/>}/>
+          <Route path=":id" element={<TodoDetail />} />
         </Route>
-        <Route path="/editer" element={<TodoEditor />} />
-        <Route path="*" element={ <NotFound/> }/>
+        <Route path="/editor" element={<TodoEditor />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
