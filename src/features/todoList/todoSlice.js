@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { addTodoEditerApi, addTodoListEditerApi } from "./apis";
+import { addTodoEditerApi, getTodoListEditerApi } from "./apis";
 
 const initialState = {
   todos: [],
@@ -12,7 +12,7 @@ export const __getTodos = createAsyncThunk(
   "todoList/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const todos = await axios.get("http://localhost:3001/todos");
+      const todos = await axios.get("http://localhost:3001/editer");
       return thunkAPI.fulfillWithValue(todos.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

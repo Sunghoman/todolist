@@ -1,112 +1,28 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "title": "리덕스 오류 질문입니다.",
-      "body": "이게 왜 안될까요 ㅠㅠ",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    },
-    {
-      "id": 2,
-      "title": "스프링 질문티비",
-      "body": "정말 너무 어려워 티비",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "spring"
-    },
-    {
-      "id": 3,
-      "title": "리액트 console.log()가 안찍혀요",
-      "body": "그거 이미지 때문일 수 있읍니다. by 지엉",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    },
-    {
-      "id": 4,
-      "title": "test",
-      "body": "# 큰글씨",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "id2": 2,
-      "comment": "This is a comment"
-    },
-    {
-      "id": 2,
-      "comment": "This is a comment within a comment section"
-    }
-  ],
   "editer": [
     {
       "id": 1,
-      "markDown": "이게 왜 안될까요 ㅠㅠ"
+      "title": "리덕스 오류 질문입니다.",
+      "markDown": "이게 왜 안될까요 ㅠㅠ",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "react"
     },
     {
       "id": 2,
-      "markDown": "정말 너무 어려워 티비"
+      "title": "리덕스 오류 질문입니다.",
+      "markDown": "이게 왜 안될까요 ㅠㅠ",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "react"
     },
     {
       "id": 3,
-      "markDown": "그거 이미지 때문일 수 있읍니다. by 지엉"
-    },
-    {
-      "123": "",
-      "id": 4
-    },
-    {
-      "123": "",
-      "id": 5
-    },
-    {
-      "# 안녕하세요!\n": "",
-      "id": 6
-    },
-    {
-      "# 안녕하세요!\n": "",
-      "id": 7
-    },
-    {
-      "# 헤더입니다": "",
-      "id": 8
-    },
-    {
-      "새 글": "",
-      "id": 9
-    },
-    {
-      "아무거나": "",
-      "id": 10
-    },
-    {
-      "markDown": "1",
-      "id": 11
-    },
-    {
-      "markDown": "# 헤더",
-      "id": 12
-    },
-    {
-      "id": 13
-    },
-    {
-      "markDown": "ㅁㄴㅇ\n# 큰 글씨",
-      "id": 14
-    },
-    {
-      "markDown": "새 글 작성하기",
-      "id": 14
-    },
-    {
-      "markDown": "새 글 작성하기",
-      "id": 15
+      "title": "리덕스 오류 질문입니다.",
+      "markDown": "이게 왜 안될까요 ㅠㅠ",
+      "status": "Working",
+      "date": "2022-10-13",
+      "tag": "react"
     }
   ]
 }

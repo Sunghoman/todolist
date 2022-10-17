@@ -12,7 +12,7 @@ export const TodoDetail = () => {
     <TodoDetailContainer>
       <TodoDetailTitle>{todoBody.title}</TodoDetailTitle>
       <TodoDetailBody>
-        <ReactMarkdown>{todoBody.body}</ReactMarkdown>
+        <ReactMarkdown>{todoBody.markDown}</ReactMarkdown>
       </TodoDetailBody>
       <CommentInput />
       <div>댓글임</div>

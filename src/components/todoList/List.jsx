@@ -14,7 +14,7 @@ export const List = () => {
 
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
-
+  console.log({ todos });
   useEffect(() => {
     dispatch(__getTodos());
   }, [dispatch]);
