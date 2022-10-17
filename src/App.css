@@ -62,9 +62,11 @@ button {
   flex-direction: row;
   min-height: 100vh;
 }
-.container {
+.editer-wrap {
   max-width: 1200px;
   width: 98%;
+}
+.container {
   margin: auto;
   display: flex;
   justify-content: space-between;
