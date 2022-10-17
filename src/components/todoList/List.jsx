@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { TodoBody } from "../../style/list_styled";
+import { H4, Output, TodoListBody } from "../../style/list_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -7,11 +7,10 @@ import { useEffect } from "react";
 import { __getTodos } from "../../features/todoList/todoSlice";
 
 export const List = () => {
-
-  const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } = useChangeTodo();
+  const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } =
+    useChangeTodo();
   const navigate = useNavigate();
 
-  
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
 
@@ -25,93 +24,92 @@ export const List = () => {
 
   return (
     <>
-      <TodoBody>
-        <div>
-          <hr />
-          <h4>해야할 일</h4>
-          <hr />
-          <ul>
+      <TodoListBody>
+        <table>
+          <H4>해야할 일</H4>
+          <tr>
             {todos.map((todo) => {
               if (todo.status === "Working") {
                 // console.log(todo);
                 return (
                   <div key={todo.id}>
-                    <li>ID: {todo.id}</li>
-                    <li>Tag: {todo.tag}</li>
-                    <li>Title: {todo.title}</li>
-                    <li>Body: {todo.body}</li>
-                    <li>Date: {todo.date}</li>
+                    <td>ID: {todo.id}</td>
+                    <td>Tag: {todo.tag}</td>
+                    <td>Title: {todo.title}</td>
+                    <td>Body: {todo.body}</td>
+                    <td>Date: {todo.date}</td>
 
                     <button onClick={() => removeTodo(todo.id)}>삭제</button>
                     <button onClick={() => toggleTodo(todo.id)}>완료</button>
-                    <button onClick={() => navigate("/detail/" + todo.id)}>상세보기</button>
-
-                    <hr />
+                    <button onClick={() => navigate("/detail/" + todo.id)}>
+                      상세보기
+                    </button>
                   </div>
                 );
               } else {
                 return null;
               }
             })}
-          </ul>
-        </div>
-        <div>
-          <hr />
-          <h4>완료한 일</h4>
-          <ul>
+          </tr>
+        </table>
+        <hr />
+        <table>
+          <H4>완료한 일</H4>
+          <tr>
             {todos.map((todo) => {
               if (todo.status === "Done") {
                 return (
                   <div key={todo.id}>
-                    <li>ID: {todo.id}</li>
-                    <li>Tag: {todo.tag}</li>
-                    <li>Title: {todo.title}</li>
-                    <li>Body: {todo.body}</li>
-                    <li>Date: {todo.date}</li>
+                    <td>ID: {todo.id}</td>
+                    <td>Tag: {todo.tag}</td>
+                    <td>Title: {todo.title}</td>
+                    <td>Body: {todo.body}</td>
+                    <td>Date: {todo.date}</td>
 
                     <button onClick={() => removeTodo(todo.id)}>삭제</button>
                     <button onClick={() => cencelTodo(todo.id)}>취소</button>
-                    <button onClick={() => navigate("/detail/" + todo.id)}>상세보기</button>
-
-                    <hr />
+                    <button onClick={() => navigate("/detail/" + todo.id)}>
+                      상세보기
+                    </button>
                   </div>
                 );
               } else {
                 return null;
               }
             })}
-          </ul>
-        </div>
-        <div>
-          <hr />
-          <h4>
+          </tr>
+        </table>
+        <hr />
+        <table>
+          <H4>
             휴지통
-            <button onClick={() => deleteAllTodo()}>전체 삭제</button>
-            <hr />
-          </h4>
-          <ul>
+            <button className="button" onClick={() => deleteAllTodo()}>
+              Delete All
+            </button>
+          </H4>
+          <tr>
             {todos.map((todo) => {
               if (todo.status === "Trash") {
                 return (
                   <div key={todo.id}>
-                    <li>ID: {todo.id}</li>
-                    <li>Tag: {todo.tag}</li>
-                    <li>Title: {todo.title}</li>
-                    <li>Body: {todo.body}</li>
-                    <li>Date: {todo.date}</li>
+                    <td>ID: {todo.id}</td>
+                    <td>Tag: {todo.tag}</td>
+                    <td>Title: {todo.title}</td>
+                    <td>Body: {todo.body}</td>
+                    <td>Date: {todo.date}</td>
 
                     <button onClick={() => restoreTodo(todo.id)}>복원</button>
-
-                    <hr />
                   </div>
                 );
               } else {
                 return null;
               }
             })}
-          </ul>
-        </div>
-      </TodoBody>
+          </tr>
+        </table>
+        <hr />
+      </TodoListBody>
+      <Output className="list-output"></Output>
     </>
   );
 };

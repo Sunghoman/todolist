@@ -1,13 +1,11 @@
 import { useTodo } from "../hooks/useTodo";
 import {
-  ButtonSet,
   Title,
   TitleAndButtonPosition,
   TodoBody,
 } from "../../style/todo_styled";
 
 export const TodoForm = () => {
-  
   // 리덕스
   const { todo, getInputs, addTodo, handleChange } = useTodo();
   const { title, body } = todo;
@@ -16,11 +14,11 @@ export const TodoForm = () => {
     <TodoBody>
       <TitleAndButtonPosition>
         <Title>StackOverFlow</Title>
-        <ButtonSet>
+        <div className="buttonSet">
           <button>All</button>
           <button>Active</button>
           <button>Completed</button>
-        </ButtonSet>
+        </div>
       </TitleAndButtonPosition>
       <select name="tag" onChange={handleChange}>
         <option value="">---</option>
@@ -43,7 +41,9 @@ export const TodoForm = () => {
         value={body}
         onChange={getInputs}
       />
-      <button onClick={addTodo}>추가</button>
+      <button className="button" onClick={addTodo}>
+        ADD
+      </button>
     </TodoBody>
   );
 };
