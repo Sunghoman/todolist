@@ -1,20 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { H4, Output, TodoListBody } from "../../style/list_styled";
+import { H4, Output, TodoListBody, TodoListItem } from "../../style/list_styled";
 import { MainLink } from "../../style/main_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 // import axios from "axios";
 import { __getTodos } from "../../features/todoList/todoSlice";
-import styled from "styled-components";
-
+ 
 export const List = () => {
   
   const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } =
     useChangeTodo();
   const navigate = useNavigate();
-  const params = useParams();
-  console.log(params.id);
 
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
@@ -115,23 +112,8 @@ export const List = () => {
       </TodoListBody>
       <Output className="list-output">
         {/* { todos[params].body } */}
-        <Outlet></Outlet>
+          <Outlet></Outlet>
       </Output>
     </>
   );
 };
-
-const TodoListItem = styled.div`
-  display: flex;
-  width: 24rem;
-  flex-direction: column;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 4px;
-  transition: all 0.3s linear;
-  &:hover {
-    transform: translateX(3%);
-  }
-`
