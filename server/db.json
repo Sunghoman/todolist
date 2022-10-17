@@ -23,25 +23,6 @@
       "status": "Working",
       "date": "2022-10-13",
       "tag": "react"
-    },
-    {
-      "id": 4,
-      "title": "test",
-      "body": "# 큰글씨",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "id2": 2, 
-      "comment": "This is a comment" 
-    },
-    {
-      "id": 2,
-      "comment": "This is a comment within a comment section"
     }
   ],
   "editer": [
@@ -95,7 +76,14 @@
     },
     {
       "id": 13
+    },
+    {
+      "markDown": "새 글 작성하기",
+      "id": 14
+    },
+    {
+      "markDown": "새 글 작성하기",
+      "id": 15
     }
   ]
 }
-

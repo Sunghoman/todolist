@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { H4, Output, TodoListBody, TodoListItem } from "../../style/list_styled";
+import { Output, TodoListBody, TodoListItem } from "../../style/list_styled";
 import { MainLink } from "../../style/main_styled";
 import { useChangeTodo } from "../hooks/useChangeTodo";
 import { useNavigate, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 // import axios from "axios";
 import { __getTodos } from "../../features/todoList/todoSlice";
- 
+
 export const List = () => {
-  
   const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } =
     useChangeTodo();
   const navigate = useNavigate();
@@ -28,9 +27,12 @@ export const List = () => {
             return (
               <TodoListItem key={todo.id}>
                 <div>Tag: {todo.tag}</div>
-                <div>{todo.title}</div><br/>
-                <div>{todo.status}</div><br/>
-                <div>{todo.date}</div><br/>
+                <div>{todo.title}</div>
+                <br />
+                <div>{todo.status}</div>
+                <br />
+                <div>{todo.date}</div>
+                <br />
                 <button onClick={() => removeTodo(todo.id)}>삭제</button>
                 <button onClick={() => toggleTodo(todo.id)}>완료</button>
                 <button onClick={() => navigate("/list/" + todo.id)}>
@@ -41,10 +43,9 @@ export const List = () => {
           })}
         </div>
         <MainLink to="/editer">새 글 작성하기</MainLink>
-
       </TodoListBody>
       <Output className="list-output">
-          <Outlet></Outlet>
+        <Outlet></Outlet>
       </Output>
     </>
   );
