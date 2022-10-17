@@ -24,9 +24,12 @@ const TodoEditor = () => {
             value={markDown}
             onChange={(e) => setMarkdown(e.target.value)}
             className="textarea"
+            placeholder="질문을 적어보세용"
           ></textarea>
           <div className="output">
-            <ReactMarkdown>{markDown}</ReactMarkdown>
+            <ReactMarkdown>
+              { markDown }
+            </ReactMarkdown>
           </div>
         </div>
       </div>
