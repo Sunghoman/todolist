@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { addTodoEditerApi } from "../../features/todoList/apis";
 
 export const addPostDB = createAsyncThunk(

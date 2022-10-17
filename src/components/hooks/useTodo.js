@@ -50,24 +50,11 @@ export const useTodo = () => {
       });
     }
   };
-  const addTodoEditer = () => {
-    console.log("버튼이 눌렸다!");
-    console.log(todo.markDown);
-    if (todo.markDown) {
-      dispatch({ type: "todoList/addTodoEditer", payload: todo });
-      setTodo((prevState) => {
-        return {
-          ...prevState,
-          markDown: "",
-        };
-      });
-    }
-  };
+
   return {
     todo,
     getInputs,
     addTodo,
     handleChange,
-    addTodoEditer,
   };
 };

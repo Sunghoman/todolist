@@ -10,7 +10,6 @@ const TodoEditor = () => {
     console.log("렌더링");
   }, []);
   const [markDown, setMarkdown] = useState();
-  // const { addTodoEditer } = useTodo();
   const addTodoEditer = () => {
     console.log(markDown);
     dispatch(addPostDB(markDown));
@@ -32,9 +31,7 @@ const TodoEditor = () => {
         </div>
       </div>
       <MainLink to="/">뒤로가기</MainLink>
-      <MainButton onClick={addTodoEditer} to="/list">
-        새 글 작성
-      </MainButton>
+      <MainButton onClick={addTodoEditer}>새 글 작성</MainButton>
     </div>
   );
 };

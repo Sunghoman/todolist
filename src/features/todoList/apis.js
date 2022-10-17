@@ -1,15 +1,17 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:3001";
 
-export const addTodoEditerApi = (todo) => {
-  axios.post(`${BASE_URL}/editer`, todo);
-};
 export const addTodoListEditerApi = async () => {
-  const reponse = await axios.get(`${BASE_URL}/editer`);
+  const response = await axios.get(`${BASE_URL}/editer`);
+  console.log(response.data);
 
-  return reponse.data;
+  return response.data;
 };
-export const delTodoEditerApi = async (id) => {
+export const addTodoEditerApi = (todo) => {
+  console.log(todo);
+  axios.post(`${BASE_URL}/editer`, { markDown: todo });
+};
+export const delTodoEditerApi = (id) => {
   axios.delete(`${BASE_URL}/editer/${id}`);
 };
