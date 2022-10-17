@@ -19,7 +19,7 @@ export const List = () => {
 
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
-  console.log({ todos });
+  console.log( todos );
   useEffect(() => {
     dispatch(__getTodos());
   }, [dispatch]);
@@ -52,6 +52,10 @@ export const List = () => {
             );
           })}
         </div>
+<<<<<<< HEAD
+=======
+        <MainLink to="/editor">새 글 작성하기</MainLink>
+>>>>>>> e6c9f9e (소소한 오타 수정)
       </TodoListBody>
       <Output className="list-output">
         <Outlet></Outlet>
