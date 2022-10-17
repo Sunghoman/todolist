@@ -25,19 +25,19 @@ export const List = () => {
   return (
     <>
       <TodoListBody>
-        <table>
+        <div>
           <H4>해야할 일</H4>
-          <tr>
+          <ul>
             {todos.map((todo) => {
               if (todo.status === "Working") {
                 // console.log(todo);
                 return (
                   <div key={todo.id}>
-                    <td>ID: {todo.id}</td>
-                    <td>Tag: {todo.tag}</td>
-                    <td>Title: {todo.title}</td>
-                    <td>Body: {todo.body}</td>
-                    <td>Date: {todo.date}</td>
+                    <li>ID: {todo.id}</li>
+                    <li>Tag: {todo.tag}</li>
+                    <li>Title: {todo.title}</li>
+                    <li>Body: {todo.body}</li>
+                    <li>Date: {todo.date}</li>
 
                     <button onClick={() => removeTodo(todo.id)}>삭제</button>
                     <button onClick={() => toggleTodo(todo.id)}>완료</button>
@@ -50,21 +50,21 @@ export const List = () => {
                 return null;
               }
             })}
-          </tr>
-        </table>
+          </ul>
+        </div>
         <hr />
-        <table>
+        <div>
           <H4>완료한 일</H4>
-          <tr>
+          <ul>
             {todos.map((todo) => {
               if (todo.status === "Done") {
                 return (
                   <div key={todo.id}>
-                    <td>ID: {todo.id}</td>
-                    <td>Tag: {todo.tag}</td>
-                    <td>Title: {todo.title}</td>
-                    <td>Body: {todo.body}</td>
-                    <td>Date: {todo.date}</td>
+                    <li>ID: {todo.id}</li>
+                    <li>Tag: {todo.tag}</li>
+                    <li>Title: {todo.title}</li>
+                    <li>Body: {todo.body}</li>
+                    <li>Date: {todo.date}</li>
 
                     <button onClick={() => removeTodo(todo.id)}>삭제</button>
                     <button onClick={() => cencelTodo(todo.id)}>취소</button>
@@ -77,26 +77,26 @@ export const List = () => {
                 return null;
               }
             })}
-          </tr>
-        </table>
+          </ul>
+        </div>
         <hr />
-        <table>
+        <div>
           <H4>
             휴지통
             <button className="button" onClick={() => deleteAllTodo()}>
               Delete All
             </button>
           </H4>
-          <tr>
+          <ul>
             {todos.map((todo) => {
               if (todo.status === "Trash") {
                 return (
                   <div key={todo.id}>
-                    <td>ID: {todo.id}</td>
-                    <td>Tag: {todo.tag}</td>
-                    <td>Title: {todo.title}</td>
-                    <td>Body: {todo.body}</td>
-                    <td>Date: {todo.date}</td>
+                    <li>ID: {todo.id}</li>
+                    <li>Tag: {todo.tag}</li>
+                    <li>Title: {todo.title}</li>
+                    <li>Body: {todo.body}</li>
+                    <li>Date: {todo.date}</li>
 
                     <button onClick={() => restoreTodo(todo.id)}>복원</button>
                   </div>
@@ -105,8 +105,8 @@ export const List = () => {
                 return null;
               }
             })}
-          </tr>
-        </table>
+          </ul>
+        </div>
         <hr />
       </TodoListBody>
       <Output className="list-output"></Output>

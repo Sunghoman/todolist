@@ -18,7 +18,7 @@ const TodoList = () => {
 const TodoListContainer = styled.div`
   display: grid;
   grid-template-columns: 36% 65%;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 10% 90%;
   column-gap: 20px;
 `;
 export default TodoList;

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { addTodoEditerApi, addTodoListEditerApi } from "./apis";
 
 const initialState = {
   todos: [],
@@ -18,6 +19,23 @@ export const __getTodos = createAsyncThunk(
     }
   }
 );
+// 1. 서버로 통신하는 코드
+// 2. 리덕스 툴킷을 사용하려면 리덕스 thunk를 사용해야함
+
+// export const __addTodoEditer = createAsyncThunk(
+//   "addTodoEditer",
+//   (payload, thunkAPI) => {
+//     addTodoEditerApi(payload);
+//     thunkAPI.dispatch(addTodoEditer(payload));
+//   }
+// );
+// export const __getTodoListEditer = createAsyncThunk(
+//   "addTodoListEditer",
+//   async (payload, thunkAPI) => {
+//     const list = await addTodoListEditerApi();
+//     thunkAPI.dispatch(getTodoListEditer(list));
+//   }
+// );
 
 export const todoSlice = createSlice({
   name: "todoList",
