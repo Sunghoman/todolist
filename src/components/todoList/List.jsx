@@ -41,6 +41,7 @@ export const List = () => {
           })}
         </div>
         <MainLink to="/editer">새 글 작성하기</MainLink>
+
       </TodoListBody>
       <Output className="list-output">
           <Outlet></Outlet>

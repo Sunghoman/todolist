@@ -1,10 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Router from "./shared/Router";
 import "./App.css";
 import ReactSwitch from "react-switch";
+import { addTodoListEditerApi } from "./features/todoList/apis";
 
 export const ThemeContext = createContext(null);
 function App() {
+  useEffect(() => {
+    addTodoListEditerApi();
+  });
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
