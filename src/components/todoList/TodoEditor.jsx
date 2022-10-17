@@ -16,7 +16,7 @@ const TodoEditor = () => {
           ></textarea>
           <div className="output">
             <ReactMarkdown>
-              {markDown}
+              { markDown }
             </ReactMarkdown>
           </div>
         </div>

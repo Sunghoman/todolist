@@ -11,8 +11,20 @@ export const __getTodos = createAsyncThunk(
   "todoList/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
-      return thunkAPI.fulfillWithValue(data.data);
+      const todos = await axios.get("http://localhost:3001/todos");
+      return thunkAPI.fulfillWithValue(todos.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getComments = createAsyncThunk(
+  "todoList/getComments",
+  async (payload, thunkAPI) => {
+    try {
+      const comments = await axios.get("http://localhost:3001/comments");
+      return thunkAPI.fulfillWithValue(comments.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -57,13 +69,34 @@ export const todoSlice = createSlice({
     [__getTodos.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.todos = action.payload;
-      // console.log("fulfilled 상태 : ", state, action); // Promise가 fulfilled 일 때, dispatch
     },
     [__getTodos.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
   },
+},
+{
+  name: "comments",
+  initialState,
+  reducers: {
+    addComment: (state, { payload }) => {
+      return [...state, payload];
+    }
+  },
+  extraReducers: {
+    [__getComments.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__getComments.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.comments = action.payload;
+    },
+    [__getComments.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
+  }
 });
 
 export const {
