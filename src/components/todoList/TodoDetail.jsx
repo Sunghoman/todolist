@@ -8,7 +8,6 @@ export const TodoDetail = () => {
 
   const { id } = useParams()
   const { todos } = useSelector((state) => state.todoList);
-  // console.log(todos)
   const todoBody = todos.find((data) => data.id === parseInt(id)); // 지금
 
 
