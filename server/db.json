@@ -28,82 +28,20 @@
       "comments": []
     },
     {
+      "markDown": "제가 어제 말이죵\n# 코딩\n을 하다가 말이죵\n\n## 세상에\n\n***\n**마상에**\n\n```\nconsole.log();\n```",
+      "title": "리액트 질문이 있읍니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
       "id": 4
     },
     {
-      "markDown": "123",
+      "markDown": "제가 어제 말이죵\n# 코딩\n을 하다가 말이죵\n\n## 세상에\n\n***\n**마상에**\n\n```\nconsole.log();\n```",
+      "title": "리액트 질문이 있읍니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
       "id": 5
-    },
-    {
-      "2": "",
-      "id": 6
-    },
-    {
-      "title": "2",
-      "markDown": "2",
-      "tag": "2",
-      "id": 7
-    },
-    {
-      "title": "질문입니다!!",
-      "markDown": "질문입니다!!",
-      "id": 8
-    },
-    {
-      "markDown": "질문입니다~~~~~~~~~~~~~~~~",
-      "id": 9
-    },
-    {
-      "markDown": "모르겠습니다ㅠㅠ",
-      "id": 10
-    },
-    {
-      "markDown": "123",
-      "id": 11
-    },
-    {
-      "markDown": {
-        "markDown": "123",
-        "title": "title"
-      },
-      "id": 12
-    },
-    {
-      "markDown": {
-        "markDown": "123",
-        "title": "title",
-        "tag": "react"
-      },
-      "id": 13
-    },
-    {
-      "markDown": {
-        "markDown": "너무 어렵네요",
-        "title": "스프링 어려워요",
-        "tag": "spring"
-      },
-      "id": 14
-    },
-    {
-      "markDown": "너무어려워요",
-      "title": "리액트",
-      "tag": "react",
-      "id": 15
-    },
-    {
-      "markDown": "힝",
-      "title": "ㅠㅠ",
-      "tag": "react",
-      "status": "Working",
-      "date": "2022-10-18",
-      "id": 16
-    },
-    {
-      "title": "",
-      "tag": "",
-      "status": "Working",
-      "date": "2022-10-18",
-      "id": 17
     }
   ]
 }
