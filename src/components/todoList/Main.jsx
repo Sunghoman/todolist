@@ -6,8 +6,9 @@ import {
   MainFront,
   MainTitle,
   MainText,
-  MainLink,
   MainWrap,
+  MainLinkOne,
+  MainLinkTwo,
 } from "../../style/main_styled";
 
 export const Main = () => {
@@ -22,7 +23,7 @@ export const Main = () => {
                 주특기 별로, 경험한 에러와 해결방법을 공유해보세요
               </MainText>
               <hr />
-              <MainLink to="/list">다른 사람들 글 보기</MainLink>
+              <MainLinkOne to="/list">다른 사람들 글 보기</MainLinkOne>
             </MainBackText>
           </MainBack>
 
@@ -36,7 +37,7 @@ export const Main = () => {
               당신의 고민의 흔적이 다른 사람들을 도울 수 있읍니다.
               <br />
             </MainText>
-            <MainLink to="/editor">이 버튼 옮겨야함(새 글 작성)</MainLink>
+            <MainLinkTwo to="/editor">이 버튼 옮겨야함(새 글 작성)</MainLinkTwo>
           </MainFront>
         </MainContainer>
       </MainPage>

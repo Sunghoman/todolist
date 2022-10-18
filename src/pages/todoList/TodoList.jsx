@@ -7,7 +7,7 @@ const TodoList = () => {
   console.log();
   return (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <TodoListContainer className="TodoList">
         {/* <TodoForm /> */}
         <List />

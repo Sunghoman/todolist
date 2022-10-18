@@ -75,7 +75,6 @@ export const TodoDetail = () => {
     </TodoDetailContainer>
   );
 };
-
 const CommentBtn = styled.button`
   width: 10rem;
   height: 2rem;

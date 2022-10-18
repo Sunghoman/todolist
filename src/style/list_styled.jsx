@@ -35,18 +35,7 @@ export const Output = styled.div`
     display: none;
   }
 `;
-export const MainButton = styled.button`
-  text-decoration: none;
-  color: #435a6b;
-  border: 1px solid #435a6b;
-  padding: 1em 2em;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  &:hover {
-    color: #7da4c5;
-    border: 2px solid #7da4c5;
-  }
-`;
+
 export const Select = styled.select`
   text-decoration: none;
   color: #435a6b;
