@@ -19,17 +19,30 @@ export const TodoDetail = () => {
   // 파라미터값
   const { id } = useParams();
   const { todos } = useSelector((state) => state.todoList);
-  console.log(todos); // 본문임
+  // console.log(todos); // 본문임
 
   // 댓글 불러오기
   const { comments } = useSelector((state) => state.commentList);
-  console.log(comments);
+  // console.log(comments[0]);
+
+  // const commentById = comments.find((comment) => { return parseInt(comment.FK) === parseInt(id) }).map((comment) => {
+  //   return (
+  //     <CommentContainer key={comment.Id}>
+  //       <Comment>asd</Comment>
+  //     </CommentContainer>
+  //   )
+  // })
+  useEffect(() => {
+    const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
+    console.log(commentById);
+  })
+
+
+  // 이거 왜 첫 렌더링 때 빈 배열뜨냥
+
   
   const todoBody = todos.find((data) => data.id === parseInt(id));
   // console.log(todoBody);
-
-  const commentById = comments.find((comment) => comment.id === todoBody.id);
-  console.log(commentById);
 
   const { todo } = useTodo();
   const { date } = todo;
@@ -44,7 +57,6 @@ export const TodoDetail = () => {
     e.preventDefault();
     setComment(e.target.value);
   }
-  // console.log(comment);
 
   return (
     <TodoDetailContainer>
@@ -62,17 +74,7 @@ export const TodoDetail = () => {
       >
         댓글 달기
       </CommentBtn>
-
-      {
-        comments.map((comment) => {
-          return (
-            <CommentContainer key={comment.id}>
-              <Comment>{ comment.comment }</Comment>
-              <span>{ comment.date }</span>
-            </CommentContainer>
-          );
-        })
-      }
+      {/* { commentById } */}
     </TodoDetailContainer>
   );
 };

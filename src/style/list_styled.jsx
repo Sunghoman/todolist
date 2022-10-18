@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 export const TodoListBody = styled.div`
   width: 32%;
   overflow: scroll;
@@ -13,18 +14,17 @@ export const TodoListItem = styled.div`
   width: 24rem;
   flex-direction: column;
   cursor: pointer;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 4px;
   transition: all 0.3s linear;
   &:hover {
     transform: translateX(3%);
+    background: #29405885;
   }
 `;
-export const H4 = styled.h4`
-  margin: 20px auto;
-`;
+
 export const Output = styled.div`
   width: calc(100% - 34%);
   height: 540px;
@@ -44,6 +44,7 @@ export const Select = styled.select`
   transition: all 0.3s ease;
   font-size: 14px;
 `;
+
 export const Input = styled.input`
   margin-left: 20px;
   text-decoration: none;
@@ -53,12 +54,15 @@ export const Input = styled.input`
   transition: all 0.3s ease;
   font-size: 14px;
 `;
+
 export const TagAndTitle = styled.div`
   margin-bottom: 10px;
 `;
+
 export const ButtonSet = styled.div`
   margin-top: 10px;
 `;
+
 export const MainLink = styled(Link)`
   margin: 0 auto 50px;
   text-decoration: none;
@@ -75,6 +79,7 @@ export const MainLink = styled(Link)`
     border: 2px solid #7da4c5;
   }
 `;
+
 export const TodoAddButton = styled.div`
   margin: auto;
   width: 100%;
