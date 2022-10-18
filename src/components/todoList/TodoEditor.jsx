@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import { ButtonSet, Input, Select, TagAndTitle } from "../../style/list_styled";
@@ -9,14 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 const TodoEditor = () => {
   const dispatch = useDispatch(); // 액션을 트리거 해주는 것
-  useEffect(() => {
-    console.log("렌더링");
-  }, []);
+
+  const comment = [];
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
     navigate("/list");
     console.log(markDown);
-    dispatch(addPostDB({ markDown, title, tag, status, date }));
+    dispatch(addPostDB({ title, markDown, tag, status, date, comment }));
   };
   const { todo, getInputs, handleChange } = useTodo();
   const { title, tag, status, date } = todo;
@@ -50,7 +49,7 @@ const TodoEditor = () => {
               placeholder="질문을 적어보세용"
             ></textarea>
             <div className="output">
-              <ReactMarkdown>{markDown}</ReactMarkdown>
+              <ReactMarkdown>{ markDown }</ReactMarkdown>
             </div>
           </div>
           <ButtonSet>

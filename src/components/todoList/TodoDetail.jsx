@@ -1,50 +1,82 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentContainer, Comment } from "../../style/detail_styled";
 import styled from "styled-components";
-import ReactMarkDown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import { addCommentDB } from "../../redux/async/post"
+import { useTodo } from "../hooks/useTodo";
+import { useEffect } from "react";
+import { __getComments } from "../../features/todoList/commentSlice";
 
 export const TodoDetail = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(__getComments());
+  }, [dispatch]);
+
   const { id } = useParams();
   const { todos } = useSelector((state) => state.todoList);
-  const todoBody = todos.find((data) => data.id === parseInt(id)); // 지금
+  console.log(todos); // 본문임
+
+  // 댓글 불러오기
+  const { comments } = useSelector((state) => state.commentList);
+  console.log(comments);
+  
+  const todoBody = todos.find((data) => data.id === parseInt(id));
+  // console.log(todoBody);
+
+  const commentById = comments.find((comment) => comment.id === todoBody.id);
+  console.log(commentById);
+
+  const { todo } = useTodo();
+  const { date } = todo;
+
+  const [comment, setComment] = useState("");
+  const addComment = () => {
+    dispatch(addCommentDB({ FK: id, comment: comment, date: date }))
+    setComment("");
+  }
+
+  const onChange = (e) => {
+    e.preventDefault();
+    setComment(e.target.value);
+  }
+  // console.log(comment);
+
   return (
     <TodoDetailContainer>
-      <TodoDetailTitle>{todoBody.title}</TodoDetailTitle>
-      <TodoDetailBody>
-        <ReactMarkDown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
-          {todoBody.markDown}
-        </ReactMarkDown>
-      </TodoDetailBody>
-      <CommentInput />
-      <div>댓글임</div>
+      <TodoDetailTitle>{ todoBody.title }</TodoDetailTitle>
+      <TodoDetailBody>{ todoBody.markDown }</TodoDetailBody>
+      <CommentInput 
+        type="text"
+        autoComplete="off"
+        placeholder="Please enter a comment..."
+        value={comment}
+        onChange={onChange}
+      />
+      <CommentBtn
+        onClick={addComment}
+      >
+        댓글 달기
+      </CommentBtn>
+
+      {
+        comments.map((comment) => {
+          return (
+            <CommentContainer key={comment.id}>
+              <Comment>{ comment.comment }</Comment>
+              <span>{ comment.date }</span>
+            </CommentContainer>
+          );
+        })
+      }
     </TodoDetailContainer>
   );
 };
-
-const TodoDetailContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-`;
-const TodoDetailTitle = styled.div`
-  font-size: 40px;
-  font-weight: bold;
-  margin: 10px 0px 30px 0px;
-`;
-const TodoDetailBody = styled.div`
-  /* font-size: initial; */
-  /* font: initial; */
-  text-align: left;
-  padding: 20px;
-`;
-const CommentInput = styled.input`
+const CommentBtn = styled.button`
   width: 10rem;
-  padding: 10px;
+  height: 2rem;
   margin: 0 auto;
-  background-color: #afafaf;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-`;
+`

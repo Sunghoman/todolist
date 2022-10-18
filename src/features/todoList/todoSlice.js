@@ -19,6 +19,8 @@ export const __getTodos = createAsyncThunk(
     }
   }
 );
+
+
 export const todoSlice = createSlice({
   name: "todoList",
   initialState,
@@ -64,7 +66,6 @@ export const todoSlice = createSlice({
     },
   },
 });
-
 export const {
   addTodo,
   removeTodo,
