@@ -14,7 +14,7 @@ export const TodoDetailBody = styled.div`
   text-align: center;
   margin: 10px 0px 30px 0px;
 `;
-export const CommentInput = styled.input`
+export const CommentInput = styled.textarea`
   width: 10rem;
   padding: 10px;
   margin: 0 auto;

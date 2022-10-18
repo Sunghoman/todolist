@@ -2,12 +2,12 @@ import { createContext, useEffect, useState } from "react";
 import Router from "./shared/Router";
 import "./App.css";
 import ReactSwitch from "react-switch";
-import { getTodoListEditerApi } from "./features/todoList/apis";
+import { getTodoListEditorApi } from "./features/todoList/apis";
 
 export const ThemeContext = createContext(null);
 function App() {
   useEffect(() => {
-    getTodoListEditerApi();
+    getTodoListEditorApi();
   });
   const [theme, setTheme] = useState("light");
 

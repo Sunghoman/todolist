@@ -14,13 +14,14 @@ import { useTodo } from "../hooks/useTodo";
 
 const TodoEditor = () => {
   const dispatch = useDispatch(); // 액션을 트리거 해주는 것
-  useEffect(() => {
-    console.log("렌더링");
-  }, []);
+  // useEffect(() => {
+  //   console.log("렌더링");
+  // }, []);
+  const comment = [];
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
     console.log(markDown);
-    dispatch(addPostDB({ markDown, title, tag, status, date }));
+    dispatch(addPostDB({ title, markDown, tag, status, date, comment }));
   };
   const { todo, getInputs, handleChange } = useTodo();
   const { title, tag, status, date } = todo;

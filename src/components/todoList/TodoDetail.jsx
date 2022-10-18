@@ -15,7 +15,6 @@ export const TodoDetail = () => {
         <ReactMarkdown>{todoBody.markDown}</ReactMarkdown>
       </TodoDetailBody>
       <CommentInput />
-      <div>댓글임</div>
     </TodoDetailContainer>
   );
 };

@@ -1,12 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addTodoEditerApi } from "../../features/todoList/apis";
+import { addTodoEditorApi, addCommentApi } from "../../features/todoList/apis";
 
 export const addPostDB = createAsyncThunk(
   "post/addPost",
   async (params, thunkAPI) => {
     // 서버랑 통신하는 코드 작성
-    const response = await addTodoEditerApi(params);
+    const response = await addTodoEditorApi(params);
     console.log(response);
     console.log(params);
   }
 );
+
+export const addCommentDB = createAsyncThunk(
+  "post/addComment",
+  async (params, thunkAPI) => {
+    const response = await addCommentApi(params);
+    console.log(response);
+    console.log(params);
+  }
+)
