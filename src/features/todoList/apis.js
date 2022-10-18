@@ -10,8 +10,9 @@ export const getTodoListEditorApi = async () => {
 export const addTodoEditorApi = (todo) => {
   axios.post(`${BASE_URL}/editor`, todo);
 };
-export const delTodoEditorApi = (id) => {
-  axios.delete(`${BASE_URL}/editor/${id}`);
+export const delPostAPI = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/editor/${id}`);
+  return response.data;
 };
 
 export const addCommentApi = (comment) => {

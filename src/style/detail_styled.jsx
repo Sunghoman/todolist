@@ -2,24 +2,31 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
 export const TodoDetailContainer = styled.div`
+  padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
 `;
+export const TodoDetailWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 export const TodoDetailTitle = styled.div`
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
-  margin: 10px 0px 30px 0px;
+`;
+export const Button = styled.div`
+  border: none;
+  cursor: pointer;
 `;
 export const TodoDetailBody = styled(ReactMarkdown)`
-  text-align: center;
-  padding: 15px;
-  margin: 10px auto 30px auto;
+  text-align: left;
   width: 40rem;
   min-height: 20rem;
   /* background-color: tomato; */
 `;
 export const CommentInput = styled.textarea`
+  resize: none;
   width: 40rem;
   padding: 10px;
   margin: 0px auto 25px auto;

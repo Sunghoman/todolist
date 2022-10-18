@@ -1,28 +1,13 @@
 {
   "editor": [
     {
-      "id": 1,
-      "title": "리덕스 오류 질문입니다.",
-      "markDown": "# 큰 글씨\n\n제가 이걸 해결해보려고 했는데 잘 안되네요\n\n무슨 무슨 에러가 떴어요\n\n**굵은 글씨**\n\n## 이런 에러도 뜨고\n\n### 이런 에러도 뜨네요",
+      "title": "2222",
+      "markDown": "2222",
+      "tag": "react",
       "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    },
-    {
-      "id": 2,
-      "title": "리덕스 오류 질문입니다.",
-      "markDown": "이게 왜 안될까요 ㅠㅠ",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
-    },
-    {
-      "id": 3,
-      "title": "리덕스 오류 질문입니다.",
-      "markDown": "이게 왜 안될까요 ㅠㅠ",
-      "status": "Working",
-      "date": "2022-10-13",
-      "tag": "react"
+      "date": "2022-10-18",
+      "comment": [],
+      "id": 5
     }
   ],
   "comments": [

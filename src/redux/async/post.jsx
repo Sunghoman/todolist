@@ -1,5 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addTodoEditorApi, addCommentApi } from "../../features/todoList/apis";
+import {
+  addTodoEditorApi,
+  addCommentApi,
+  delPostAPI,
+} from "../../features/todoList/apis";
 
 export const addPostDB = createAsyncThunk(
   "post/addPost",
@@ -19,4 +23,15 @@ export const addCommentDB = createAsyncThunk(
     console.log(response);
     console.log(params);
   }
-)
+);
+
+//포스트 삭제
+export const delPostDB = createAsyncThunk(
+  "post/delPost",
+  async (params, thunkAPI) => {
+    const response = await delPostAPI(params);
+    console.log(response);
+    console.log(params);
+    return params;
+  }
+);
