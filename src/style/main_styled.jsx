@@ -62,9 +62,39 @@ export const MainText = styled.p`
   text-align: center;
 `;
 
+export const MainLinkOne = styled(Link)`
+  position: absolute;
+  margin: 40px 0px 30px 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #435a6b;
+  border: 1px solid #435a6b;
+  padding: 1em 2em;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #7da4c5;
+    border: 2px solid #7da4c5;
+  }
+`;
+export const MainLinkTwo = styled(Link)`
+  position: absolute;
+  margin: 50px 0px 30px 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #435a6b;
+  border: 1px solid #435a6b;
+  padding: 1em 2em;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #7da4c5;
+    border: 2px solid #7da4c5;
+  }
+`;
 export const MainLink = styled(Link)`
   position: absolute;
-  margin: 30px 0px 30px 0px;
+  margin: 50px 0px 30px 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;

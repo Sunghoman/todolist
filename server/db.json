@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "리덕스 오류 질문입니다.",
-      "markDown": "이게 왜 안될까요 ㅠㅠ",
+      "markDown": "# 문제 설명 \n **볼드체**",
       "status": "Working",
       "date": "2022-10-13",
       "tag": "react",
@@ -104,6 +104,68 @@
       "status": "Working",
       "date": "2022-10-18",
       "id": 17
+    },
+    {
+      "markDown": ">### 문제 설명\n\n함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.\n\n다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.\n\n>### 제한 조건\n\n- x는 -10000000 이상, 10000000 이하인 정수입니다.\n- n은 1000 이하인 자연수입니다.\n\n>### 입출력 예\n\n![](https://velog.velcdn.com/images/haesoo/post/10e90444-2af1-43b4-ae9a-ebc35355caf6/image.png)",
+      "title": "문제 풀이 부탁드립니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 18
+    },
+    {
+      "markDown": ">### 문제 설명\n\n함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.\n\n다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.\n\n>### 제한 조건\n\n- x는 -10000000 이상, 10000000 이하인 정수입니다.\n- n은 1000 이하인 자연수입니다.\n\n>### 입출력 예\n\n![](https://velog.velcdn.com/images/haesoo/post/10e90444-2af1-43b4-ae9a-ebc35355caf6/image.png)",
+      "title": "문제 풀이 부탁드립니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 19
+    },
+    {
+      "markDown": ">### 문제 설명\n\n함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.\n\n다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.\n\n>### 제한 조건\n\n- x는 -10000000 이상, 10000000 이하인 정수입니다.\n- n은 1000 이하인 자연수입니다.\n\n>### 입출력 예\n\n![](https://velog.velcdn.com/images/haesoo/post/10e90444-2af1-43b4-ae9a-ebc35355caf6/image.png)",
+      "title": "문제 풀이 부탁드립니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 20
+    },
+    {
+      "markDown": ">### 문제 설명\n\n함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다.\n\n다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.\n\n>### 제한 조건\n\n- x는 -10000000 이상, 10000000 이하인 정수입니다.\n- n은 1000 이하인 자연수입니다.\n\n>### 입출력 예\n\n![](https://velog.velcdn.com/images/haesoo/post/10e90444-2af1-43b4-ae9a-ebc35355caf6/image.png)",
+      "title": "문제 풀이 부탁드립니다",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 21
+    },
+    {
+      "title": "",
+      "tag": "",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 22
+    },
+    {
+      "title": "",
+      "tag": "",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 23
+    },
+    {
+      "markDown": "# 테스트입니다!!",
+      "title": "test",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 24
+    },
+    {
+      "markDown": ">### 문제 설명\n\n프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다.\n\n\n전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.\n\n>### 제한 조건\n\n- phone_number는 길이 4 이상, 20이하인 문자열입니다.\n\n>### 입출력 예\n\n![](https://velog.velcdn.com/images/haesoo/post/2003b1bb-20ed-4c13-9c35-9d9e5f920a5f/image.png)\n\n\n>### 풀이\n\n```\nfunction solution(phone_number) {\n    var answer = '';\n  \tlet len = phone_number.length - 4;\n    return answer = \"*\".repeat(len) + phone_number.slice(-4);;\n}\n```\n\n>### 설명\n\n우선 변수 answer을 빈 문자열인 ''로 생성한다.\n\n변수 len을 생성하여 매개변수로 입력 받을 phone_number의 길이에서 -4 한 값을 넣어준다.\n\n\"*\"을 repeat() 함수를 사용하여 len의 count 만큼 반복하여 붙여준다.거기에 phone_number를 slice() 함수를 사용하여 -4 한 값을 붙여주면 그 값을 answer에 넣어 return 한다.\n\n#### repeat() 함수란?\n주어진 문자열을 옵션의 count 만큼 반복하여 붙인 다음에 새로운 문자열로 반환한다.\n\n#### slice() 함수란?\n배열의 일부분을 잘라내어 새로운 배열로 반환한다.\n\n>### 예시\n\n![](https://velog.velcdn.com/images/haesoo/post/8358c87d-254e-402a-9774-d2e40bd1bc83/image.png)",
+      "title": "핸드폰 번호 가리기",
+      "tag": "react",
+      "status": "Working",
+      "date": "2022-10-18",
+      "id": 25
     }
   ]
 }

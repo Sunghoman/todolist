@@ -1,18 +1,21 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import ReactMarkdown from "react-markdown";
+import ReactMarkDown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 export const TodoDetail = () => {
   const { id } = useParams();
   const { todos } = useSelector((state) => state.todoList);
   const todoBody = todos.find((data) => data.id === parseInt(id)); // 지금
-
   return (
     <TodoDetailContainer>
       <TodoDetailTitle>{todoBody.title}</TodoDetailTitle>
       <TodoDetailBody>
-        <ReactMarkdown>{todoBody.markDown}</ReactMarkdown>
+        <ReactMarkDown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+          {todoBody.markDown}
+        </ReactMarkDown>
       </TodoDetailBody>
       <CommentInput />
       <div>댓글임</div>
@@ -26,13 +29,15 @@ const TodoDetailContainer = styled.div`
   text-align: center;
 `;
 const TodoDetailTitle = styled.div`
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
   margin: 10px 0px 30px 0px;
 `;
 const TodoDetailBody = styled.div`
-  text-align: center;
-  margin: 10px 0px 30px 0px;
+  /* font-size: initial; */
+  /* font: initial; */
+  text-align: left;
+  padding: 20px;
 `;
 const CommentInput = styled.input`
   width: 10rem;

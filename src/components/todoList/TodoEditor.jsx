@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
-import {
-  ButtonSet,
-  Input,
-  MainButton,
-  MainLink,
-  Select,
-  TagAndTitle,
-} from "../../style/list_styled";
+import { ButtonSet, Input, Select, TagAndTitle } from "../../style/list_styled";
 import { addPostDB } from "../../redux/async/post";
 import { useTodo } from "../hooks/useTodo";
+import { MainButton, MainLink } from "../../style/editor_styled";
+import { useNavigate } from "react-router-dom";
 
 const TodoEditor = () => {
   const dispatch = useDispatch(); // 액션을 트리거 해주는 것
@@ -19,11 +14,13 @@ const TodoEditor = () => {
   }, []);
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
+    navigate("/list");
     console.log(markDown);
     dispatch(addPostDB({ markDown, title, tag, status, date }));
   };
   const { todo, getInputs, handleChange } = useTodo();
   const { title, tag, status, date } = todo;
+  const navigate = useNavigate();
   return (
     <div>
       <div className="wrap">

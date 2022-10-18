@@ -4,7 +4,7 @@ import GlobalStyles from "../../style/globalstyle";
 const TodoMain = () => {
   return (
     <div>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <Main />
     </div>
   );
