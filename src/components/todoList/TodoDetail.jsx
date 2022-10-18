@@ -16,6 +16,7 @@ export const TodoDetail = () => {
     dispatch(__getComments());
   }, [dispatch]);
 
+  // 파라미터값
   const { id } = useParams();
   const { todos } = useSelector((state) => state.todoList);
   console.log(todos); // 본문임
