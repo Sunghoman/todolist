@@ -15,5 +15,7 @@ export const delTodoEditorApi = (id) => {
 };
 
 export const addCommentApi = (comment) => {
-  axios.post(`${BASE_URL}/editor`, comment);
+  axios.post(`${BASE_URL}/comments`, comment);
 };
+
+// 그냥 게시물 덩어리에 comments 추가해서 post 하기

@@ -11,6 +11,7 @@ export const addPostDB = createAsyncThunk(
   }
 );
 
+// 댓글 달기
 export const addCommentDB = createAsyncThunk(
   "post/addComment",
   async (params, thunkAPI) => {

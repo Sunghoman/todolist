@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import {
@@ -14,9 +14,7 @@ import { useTodo } from "../hooks/useTodo";
 
 const TodoEditor = () => {
   const dispatch = useDispatch(); // 액션을 트리거 해주는 것
-  // useEffect(() => {
-  //   console.log("렌더링");
-  // }, []);
+
   const comment = [];
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
@@ -54,7 +52,7 @@ const TodoEditor = () => {
               placeholder="질문을 적어보세용"
             ></textarea>
             <div className="output">
-              <ReactMarkdown>{markDown}</ReactMarkdown>
+              <ReactMarkdown>{ markDown }</ReactMarkdown>
             </div>
           </div>
           <ButtonSet>
