@@ -41,7 +41,6 @@ export const List = () => {
                   <br />
                   <div>{todo.date}</div>
                   <br />
-                  <button onClick={() => removeTodo(todo.id)}>삭제</button>
                   <button onClick={() => toggleTodo(todo.id)}>완료</button>
                   <button onClick={() => navigate("/list/" + todo.id)}>
                     상세보기

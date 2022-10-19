@@ -28,16 +28,41 @@ export const CommentInput = styled.textarea`
   outline: none;
   border-radius: 5px;
 `;
-export const CommentContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 40rem;
-  margin: 0 auto;
-  margin: 20px auto 10px auto;
+export const CommentContainer = styled.section`
+  width: 600px;
+  margin: 20px auto 0 auto;
+  position: relative;
+  background: gray;
+  color: black;
+  padding: 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #fff;
-`;
-export const Comment = styled.h4`
-  font-size: 1rem;
-  letter-spacing: 1.2px;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  float: right;
+`
+
+export const CommentBody = styled.p`
+  text-align: left;
+  margin-left: 1.1em;
+`
+
+export const CommentInfo = styled.div`
+  text-align: right;
+`
+
+export const CommentMore = styled.span`
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+`
+
+export const CommentDate = styled.div`
+  width: 100px;
+  float: left;
+  color: #c9c9c9;
+`
+export const CommentBtn = styled.button`
+  width: 10rem;
+  height: 2rem;
+  margin: 0 auto;
 `;

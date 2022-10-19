@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentContainer, Comment } from "../../style/detail_styled";
+import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate } from "../../style/detail_styled";
 import styled from "styled-components";
 import { addCommentDB } from "../../redux/async/post"
 import { useTodo } from "../hooks/useTodo";
@@ -22,23 +22,17 @@ export const TodoDetail = () => {
   // console.log(todos); // 본문임
 
   // 댓글 불러오기
+  // 
   const { comments } = useSelector((state) => state.commentList);
-  // console.log(comments[0]);
 
-  // const commentById = comments.find((comment) => { return parseInt(comment.FK) === parseInt(id) }).map((comment) => {
-  //   return (
-  //     <CommentContainer key={comment.Id}>
-  //       <Comment>asd</Comment>
-  //     </CommentContainer>
-  //   )
-  // })
-  useEffect(() => {
-    const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
-    console.log(commentById);
-  })
+  // 게시물에 해당하는 댓글 (근데 바로 안뜸)
+  const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
+  // console.log(commentById);
 
 
   // 이거 왜 첫 렌더링 때 빈 배열뜨냥
+  const [,setUpdate] = useState();
+  const forceUpdate = useCallback(() => setUpdate({}), []);
 
   
   const todoBody = todos.find((data) => data.id === parseInt(id));
@@ -51,6 +45,7 @@ export const TodoDetail = () => {
   const addComment = () => {
     dispatch(addCommentDB({ FK: id, comment: comment, date: date }))
     setComment("");
+    forceUpdate();
   }
 
   const onChange = (e) => {
@@ -70,16 +65,31 @@ export const TodoDetail = () => {
         onChange={onChange}
       />
       <CommentBtn
-        onClick={addComment}
+        onClick={() => {
+          addComment()
+          forceUpdate()
+        }}
       >
         댓글 달기
       </CommentBtn>
       {/* { commentById } */}
+
+        {
+          comments.map((comment) => {
+            return(
+              <CommentContainer key={comment.id}>
+                <div>
+                  <CommentBody>{ comment.comment }</CommentBody>
+                  <CommentInfo>
+                    <CommentDate>{ comment.date }</CommentDate>
+                    <CommentMore>수정</CommentMore>
+                    <CommentMore>삭제</CommentMore>
+                  </CommentInfo>
+                </div>
+              </CommentContainer>
+            )
+          })
+        }
     </TodoDetailContainer>
   );
 };
-const CommentBtn = styled.button`
-  width: 10rem;
-  height: 2rem;
-  margin: 0 auto;
-`
