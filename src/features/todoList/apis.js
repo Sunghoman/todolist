@@ -10,8 +10,13 @@ export const getTodoListEditorApi = async () => {
 export const addTodoEditorApi = (todo) => {
   axios.post(`${BASE_URL}/editor`, todo);
 };
-export const delTodoEditorApi = (id) => {
-  axios.delete(`${BASE_URL}/editor/${id}`);
+export const delPostAPI = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/editor/${id}`);
+  return response.data;
+};
+export const upPostAPI = async (id, edit) => {
+  const response = await axios.patch(`${BASE_URL}/editor/${id}`, edit);
+  return response.data;
 };
 
 // 댓글 CRUD API

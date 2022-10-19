@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { delPostDB } from "../../redux/async/post";
 import { addTodoEditerApi, getTodoListEditerApi } from "./apis";
 
 const initialState = {
@@ -19,7 +20,6 @@ export const __getTodos = createAsyncThunk(
     }
   }
 );
-
 
 export const todoSlice = createSlice({
   name: "todoList",
@@ -53,12 +53,28 @@ export const todoSlice = createSlice({
     // },
   },
   extraReducers: {
+    [delPostDB.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [delPostDB.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      // 👉🏻 삭제 로직
+      state.todos = state.todos.filter(
+        (todo) => todo.id !== Number(action.payload)
+      );
+    },
+    [delPostDB.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
     [__getTodos.pending]: (state) => {
       state.isLoading = true;
     },
     [__getTodos.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.todos = action.payload;
+      console.log("할당 완료!");
     },
     [__getTodos.rejected]: (state, action) => {
       state.isLoading = false;
