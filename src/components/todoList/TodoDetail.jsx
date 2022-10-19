@@ -1,11 +1,32 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, TodoDetailWrap, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate, Button } from "../../style/detail_styled";
+import {
+  TodoDetailContainer,
+  TodoDetailTitle,
+  TodoDetailBody,
+  CommentInput,
+  CommentBtn,
+  TodoDetailWrap,
+  CommentContainer,
+  CommentBody,
+  CommentInfo,
+  CommentMore,
+  CommentDate,
+  Button,
+} from "../../style/detail_styled";
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
-import { __getComments, __delComment } from "../../features/todoList/commentSlice";
+import {
+  __getComments,
+  __delComment,
+} from "../../features/todoList/commentSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { addCommentDB, delPostDB } from "../../redux/async/post";
+import {
+  addCommentDB,
+  delPostDB,
+  upPostDB,
+  upStatusDB,
+} from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -37,12 +58,13 @@ export const TodoDetail = () => {
   const todoBody = todos && todos.find((data) => data.id === parseInt(id));
 
   // 댓글 불러오기
-  // 
+  //
   const { comments } = useSelector((state) => state.commentList);
 
-
   // 게시물에 해당하는 댓글 (근데 바로 안뜸)
-  const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
+  const commentById = comments.filter(
+    (comment) => parseInt(comment.FK) === parseInt(id)
+  );
   // console.log(commentById);
 
   const { todo } = useTodo();
@@ -70,8 +92,12 @@ export const TodoDetail = () => {
   const onChange = (e) => {
     e.preventDefault();
     setComment(e.target.value);
-  }
+  };
 
+  // 상태값 변경 함수
+  // const statusChange = () => {
+  //   dispatch(upStatusDB());
+  // };
   return (
     <>
       <TodoDetailContainer>
@@ -83,7 +109,10 @@ export const TodoDetail = () => {
             <button className="check-button">
               <FontAwesomeIcon icon={faCircleCheck} />
             </button>
-            <button className="edit-button">
+            <button
+              onClick={() => navigate("/edit/" + id)}
+              className="edit-button"
+            >
               <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button onClick={deletePost} className="delete-button">
@@ -101,24 +130,26 @@ export const TodoDetail = () => {
           onChange={onChange}
         />
         <CommentBtn onClick={addComment}>댓글 달기</CommentBtn>
-        {
-          comments.map((comment) => {
-            return(
-              <CommentContainer key={comment.id}>
-                <div>
-                  <CommentBody>{ comment.comment }</CommentBody>
-                  <CommentInfo>
-                    <CommentDate>{ comment.date }</CommentDate>
-                    <CommentMore>수정</CommentMore>
-                    <CommentMore onClick={() => {
-                      dispatch(__delComment(comment.id))
-                    }}>삭제</CommentMore>
-                  </CommentInfo>
-                </div>
-              </CommentContainer>
-            )
-          })
-        }
+        {comments.map((comment) => {
+          return (
+            <CommentContainer key={comment.id}>
+              <div>
+                <CommentBody>{comment.comment}</CommentBody>
+                <CommentInfo>
+                  <CommentDate>{comment.date}</CommentDate>
+                  <CommentMore>수정</CommentMore>
+                  <CommentMore
+                    onClick={() => {
+                      dispatch(__delComment(comment.id));
+                    }}
+                  >
+                    삭제
+                  </CommentMore>
+                </CommentInfo>
+              </div>
+            </CommentContainer>
+          );
+        })}
       </TodoDetailContainer>
     </>
   );
