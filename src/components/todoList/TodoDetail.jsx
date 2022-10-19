@@ -4,8 +4,14 @@ import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, Com
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
 import { __getComments, __delComment, __addComment, __editComment } from "../../features/todoList/commentSlice";
+
 import { useNavigate, useParams } from "react-router-dom";
-import { addCommentDB, delPostDB } from "../../redux/async/post";
+import {
+  addCommentDB,
+  delPostDB,
+  upPostDB,
+  upStatusDB,
+} from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -66,7 +72,7 @@ export const TodoDetail = () => {
   const onChange = (e) => {
     e.preventDefault();
     setComment(e.target.value);
-  }
+  };
 
   const [commentText, setCommentText] = useState("");
 
@@ -88,7 +94,7 @@ export const TodoDetail = () => {
   const [modal, setModal] = useState(false);
   // 댓글의 id값 판별
   const [selected, setSelected] = useState(null);
-
+  
   return (
     <>
       <TodoDetailContainer>
@@ -100,7 +106,10 @@ export const TodoDetail = () => {
             <button className="check-button">
               <FontAwesomeIcon icon={faCircleCheck} />
             </button>
-            <button className="edit-button">
+            <button
+              onClick={() => navigate("/edit/" + id)}
+              className="edit-button"
+            >
               <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button onClick={deletePost} className="delete-button">

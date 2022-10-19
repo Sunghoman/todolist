@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { delPostDB } from "../../redux/async/post";
-import { addTodoEditerApi, getTodoListEditerApi } from "./apis";
+import { delPostDB, getPostOne, upPostDB } from "../../redux/async/post";
 
 const initialState = {
+  todo: null,
   todos: [],
   isLoading: false,
   error: null,
@@ -53,6 +53,66 @@ export const todoSlice = createSlice({
     // },
   },
   extraReducers: {
+    // [upPostDB.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [upPostDB.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.todos = state.todos.map((todo) => {
+    //     if (todo.id === action.payload.id) {
+    //       return (todo.status = "Done");
+    //     } else {
+    //       return action.payload;
+    //     }
+    //   });
+    // },
+    // [upPostDB.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
+
+    // 하나의 정보 가져오기
+    [getPostOne.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getPostOne.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todo = action.payload;
+      console.log(action.payload);
+    },
+    [getPostOne.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // 포스트 수정하기
+    [upPostDB.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [upPostDB.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todos = state.todos.map((todo) => {
+        console.log(action.payload.edit.title);
+        if (todo.id === +action.payload.id) {
+          console.log("같은 경우");
+          return {
+            ...todo,
+            title: action.payload.edit.title,
+            markDown: action.payload.edit.markDown,
+          };
+        } else {
+          console.log("다른 경우");
+          return { ...todo };
+        }
+      });
+      console.log(action);
+    },
+    [upPostDB.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // 삭제하기
     [delPostDB.pending]: (state) => {
       state.isLoading = true;
     },

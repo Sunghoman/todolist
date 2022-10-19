@@ -14,9 +14,16 @@ export const delPostAPI = async (id) => {
   const response = await axios.delete(`${BASE_URL}/editor/${id}`);
   return response.data;
 };
-export const upPostAPI = async (id, edit) => {
-  const response = await axios.patch(`${BASE_URL}/editor/${id}`, edit);
+export const upPostAPI = async (id, editTodo) => {
+  await axios.patch(`${BASE_URL}/editor/${id}`, editTodo);
+};
+export const getPostOneAPI = async (id, edit) => {
+  const response = await axios.get(`${BASE_URL}/editor/${id}`);
   return response.data;
+};
+
+export const upStatusAPI = async (id) => {
+  const response = await axios.patch(`${BASE_URL}/editor/${id}`);
 };
 
 // 댓글 CRUD API
@@ -26,4 +33,4 @@ export const addCommentApi = (comment) => {
 
 export const delCommentApi = (id) => {
   axios.delete(`${BASE_URL}/comments/${id}`);
-}
+};
