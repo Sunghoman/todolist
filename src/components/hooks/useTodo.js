@@ -14,8 +14,8 @@ export const useTodo = () => {
     id: null,
     tag: "",
     title: "",
-    body: "",
-    status: "Working",
+    markDown: "",
+    status: false,
     date: year + "-" + month + "-" + day,
   });
 
@@ -45,7 +45,7 @@ export const useTodo = () => {
         return {
           ...prevState,
           title: "",
-          body: "",
+          markDown: "",
         };
       });
     }

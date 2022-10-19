@@ -6,15 +6,13 @@ import {
   TodoListBody,
   TodoListItem,
 } from "../../style/list_styled";
-import { useChangeTodo } from "../hooks/useChangeTodo";
 import { useNavigate, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 // import axios from "axios";
 import { __getTodos } from "../../features/todoList/todoSlice";
 
 export const List = () => {
-  const { removeTodo, toggleTodo, restoreTodo, cencelTodo, deleteAllTodo } =
-    useChangeTodo();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
