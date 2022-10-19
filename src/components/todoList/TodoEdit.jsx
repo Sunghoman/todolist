@@ -16,18 +16,17 @@ const TodoEdit = () => {
   const addTodoEditer = () => {
     navigate("/list");
     console.log(markDown);
-    dispatch(addPostDB({ title, markDown, tag, status, date, comment }));
+    dispatch(addPostDB({ markDown, tag, status, date, comment }));
   };
   const { todo, handleChange } = useTodo();
   const { title, tag, status, date } = todo;
+  // console.log(todo)
 
   const [body, setBody] = useState("");
   const [mark, setMark] = useState("");
   const postTitle = useSelector((state) => state.todoList.todo?.title); // 옵셔널 체이닝
   const postMark = useSelector((state) => state.todoList.todo?.markDown); // 옵셔널 체이닝
-
-  console.log(postTitle);
-
+  
   useEffect(() => {
     setBody(postTitle);
   }, [postTitle]);
@@ -42,7 +41,7 @@ const TodoEdit = () => {
   // const updatePost = () => {
   //   dispatch(upPostDB({ id, edit: { title, markDown } }));
   //   navigate(-1);
-  // };
+  // };s
 
   const handleGoBack = () => {
     navigate(-1);
@@ -52,7 +51,7 @@ const TodoEdit = () => {
   const updatePost = () => {
     const params = {
       id,
-      edit: { title, markDown },
+      edit: { body, markDown },
       callBackFunc: () => {
         handleGoBack();
       },

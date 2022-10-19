@@ -24,34 +24,7 @@ export const __getTodos = createAsyncThunk(
 export const todoSlice = createSlice({
   name: "todoList",
   initialState,
-  reducers: {
-    addTodo: (state, { payload }) => {
-      return [...state, payload];
-    },
-    // removeTodo: (state, { payload }) => {
-    //   return state.map((todo) =>
-    //     todo.id === payload ? { ...todo, status: "Trash" } : todo
-    //   );
-    // },
-    // toggleTodo: (state, { payload }) => {
-    //   return state.map((todo) =>
-    //     todo.id === payload ? { ...todo, status: "Done" } : todo
-    //   );
-    // },
-    // restoreTodo: (state, { payload }) => {
-    //   return state.map((todo) =>
-    //     todo.id === payload ? { ...todo, status: "Working" } : todo
-    //   );
-    // },
-    // cencelTodo: (state, { payload }) => {
-    //   return state.map((todo) =>
-    //     todo.id === payload ? { ...todo, status: "Working" } : todo
-    //   );
-    // },
-    // deleteAllTodo: (state) => {
-    //   return state.filter((todo) => todo.status !== "Trash");
-    // },
-  },
+  reducers: {},
   extraReducers: {
     // [upPostDB.pending]: (state) => {
     //   state.isLoading = true;

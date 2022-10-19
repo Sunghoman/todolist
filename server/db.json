@@ -1,84 +1,56 @@
 {
   "editor": [
     {
-      "title": "",
-      "markDown": "2앗??",
+      "title": "이 모든 구성이",
+      "markDown": "삼만 구천 팔백원!\n\n무야호",
       "tag": "spring",
       "status": "Working",
-      "date": "2022-10-19",
+      "date": "2022-10-20",
       "comment": [],
-      "id": 4
+      "id": 2,
+      "body": "이 모든 구성이"
     },
     {
+      "title": "약호",
+      "markDown": "약호\n\nㅈ짜라빠빠",
+      "tag": "spring",
+      "status": "Working",
+      "date": "2022-10-20",
+      "comment": [],
       "id": 3,
-      "title": "리덕스 오류 질문입니다.",
-      "markDown": "이게 왜 안될까요 ㅠㅠ",
-      "status": "Working",
-      "date": "2022-10-19",
-      "comment": [],
-      "id": 5
-    },
-    {
-      "title": "에러가 떠ㅏㅅ어요ㅗ",
-      "markDown": "에러가 떳어요\n\n# 마크다운이 됩니다\n## 더 작은 글씨!\n### 더더 작은 글씨!\n\n***\n\n```\nconsole.log(asd)\n```",
-      "tag": "spring",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 4
-    },
-    {
-      "title": "ㅁㄴㅇㅁㄴㅇ",
-      "markDown": "ㅁㄴㅇㅁㄴㅇㅁㄴ",
-      "tag": "",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 5
+      "body": "약호"
     }
   ],
   "comments": [
     {
       "FK": "1",
-      "comment": "성공하면 백만원",
-      "date": "2022-10-19",
-      "id": 20
-    },
-    {
-      "FK": "1",
-      "comment": "되면 백만원",
-      "date": "2022-10-19",
-      "id": 25
+      "comment": "댓글!",
+      "date": "2022-10-20",
+      "id": 1
     },
     {
       "FK": "3",
-      "comment": "123",
+      "comment": "해야할 일",
       "date": "2022-10-20",
-      "id": 26
+      "id": 2
     },
     {
       "FK": "3",
-      "comment": "ㅁㄴㅇㄹㅁㄴㅇㄹ",
+      "comment": "폴더구조 싹 깔끔티비\n",
       "date": "2022-10-20",
-      "id": 27
+      "id": 3
     },
     {
       "FK": "3",
-      "comment": "asd",
+      "comment": "그리구 css 쪼금 손보기",
       "date": "2022-10-20",
-      "id": 28
+      "id": 4
     },
     {
-      "FK": "4",
-      "comment": "야허",
+      "FK": "3",
+      "comment": "배포",
       "date": "2022-10-20",
-      "id": 29
-    },
-    {
-      "FK": "6",
-      "comment": "1223",
-      "date": "2022-10-20",
-      "id": 30
+      "id": 5
     }
   ]
 }

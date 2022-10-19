@@ -14,7 +14,6 @@ import {
 } from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleCheck,
   faPenToSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -94,6 +93,8 @@ export const TodoDetail = () => {
   const [modal, setModal] = useState(false);
   // 댓글의 id값 판별
   const [selected, setSelected] = useState(null);
+
+  // console.log(todoBody)
   
   return (
     <>
@@ -103,9 +104,6 @@ export const TodoDetail = () => {
           {/* 👉🏻 todoBody가 undefined면 스피너를 보여 주던가 따로 처리를 해야함. */}
           <TodoDetailTitle>{todoBody && todoBody.title}</TodoDetailTitle>
           <Button className="buttonset">
-            <button className="check-button">
-              <FontAwesomeIcon icon={faCircleCheck} />
-            </button>
             <button
               onClick={() => navigate("/edit/" + id)}
               className="edit-button"

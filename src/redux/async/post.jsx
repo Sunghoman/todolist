@@ -51,7 +51,7 @@ export const getPostOne = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const response = await getPostOneAPI(params);
-      console.log(response);
+      // console.log(response);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -80,6 +80,6 @@ export const upPostDB = createAsyncThunk(
 export const upStatusDB = createAsyncThunk(
   "post/upStatus",
   async (params, thunkAPI) => {
-    const reponse = await upStatusAPI(params);
+    const response = await upStatusAPI(params);
   }
 );
