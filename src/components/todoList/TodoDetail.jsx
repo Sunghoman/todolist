@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { addCommentDB } from "../../redux/async/post"
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
-import { __getComments } from "../../features/todoList/commentSlice";
+import { __getComments, __delComment } from "../../features/todoList/commentSlice";
 
 export const TodoDetail = () => {
 
@@ -83,7 +83,9 @@ export const TodoDetail = () => {
                   <CommentInfo>
                     <CommentDate>{ comment.date }</CommentDate>
                     <CommentMore>수정</CommentMore>
-                    <CommentMore>삭제</CommentMore>
+                    <CommentMore onClick={() => {
+                      dispatch(__delComment(comment.id))
+                    }}>삭제</CommentMore>
                   </CommentInfo>
                 </div>
               </CommentContainer>
