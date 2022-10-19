@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, TodoDetailWrap, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate, Button } from "../../style/detail_styled";
+import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, TodoDetailWrap, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate, Button, Commentinput } from "../../style/detail_styled";
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
-import { __getComments, __delComment, __addComment } from "../../features/todoList/commentSlice";
+import { __getComments, __delComment, __addComment, __editComment } from "../../features/todoList/commentSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { addCommentDB, delPostDB } from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,6 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { __getTodos } from "../../features/todoList/todoSlice";
-import styled from "styled-components";
 
 export const TodoDetail = () => {
 
@@ -28,25 +27,26 @@ export const TodoDetail = () => {
 
   // 파라미터값
   const { id } = useParams();
-  const { todos } = useSelector((state) => state.todoList);
-  // console.log(todos); // 본문임
-  const todoBody = todos && todos.find((data) => data.id === parseInt(id));
 
+  const { todos } = useSelector((state) => state.todoList);
+  const todoBody = todos && todos.find((data) => data.id === parseInt(id));
   // 댓글 불러오기
-  // 
   const { comments } = useSelector((state) => state.commentList);
 
-
   // 게시물에 해당하는 댓글 (근데 바로 안뜸)
-  const commentById = comments.filter((comment) => parseInt(comment.FK) === parseInt(id))
-  console.log(commentById);
+  // 리두서에서 액션 만들어서 처리하면 된당
+  const commentById = comments?.filter((comment) => parseInt(comment?.FK) === parseInt(id))
 
   const { todo } = useTodo();
   const { date } = todo;
 
+  // 댓글창 기본값
   const [comment, setComment] = useState("");
   const addComment = () => {
-    dispatch(addCommentDB({ FK: id, comment: comment, date: date }));
+    if (comment !== "") {
+      dispatch(addCommentDB({ FK: id, comment: comment, date: date }));
+    }
+
     setComment("");
   };
 
@@ -68,7 +68,26 @@ export const TodoDetail = () => {
     setComment(e.target.value);
   }
 
+  const [commentText, setCommentText] = useState("");
+
+  const handleSubmit = (e) => {
+    if (commentText !== "") {
+      dispatch(__editComment({ id: selected, text: commentText }));
+    } else {
+      return;
+    }
+    setCommentText("");
+    navigate(`/list/${id}`)
+  }
+
+  const handleChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  // 모달 상태
   const [modal, setModal] = useState(false);
+  // 댓글의 id값 판별
+  const [selected, setSelected] = useState(null);
 
   return (
     <>
@@ -100,22 +119,39 @@ export const TodoDetail = () => {
         />
         <CommentBtn onClick={addComment}>댓글 달기</CommentBtn>
         {
-          comments.map((comment) => {
+          commentById&&commentById.map((comment) => {
             return(
-              <CommentContainer key={comment.id}>
+              <CommentContainer key={comment?.id}>
                 <div>
-                  <CommentBody>{ comment.comment }</CommentBody>
+                  <CommentBody>{ comment?.comment }</CommentBody>
                   <CommentInfo>
-                    <CommentDate>{ comment.date }</CommentDate>
-                    <CommentMore onClick={() => setModal(!modal)}> {modal === true ? "완료" : "수정"}</CommentMore>
+                    <CommentDate>{ comment?.date }</CommentDate>
                     <CommentMore onClick={() => {
-                      dispatch(__delComment(comment.id))
+                      setModal(!modal)
+                      setSelected(comment?.id)
+                    }}
+                    > 
+                      { modal === true && comment?.id === selected ? "완료" : "수정" }
+                    </CommentMore>
+                    <CommentMore onClick={() => {
+                      dispatch(__delComment(comment?.id))
                     }}>삭제</CommentMore>
                   </CommentInfo>
                 </div>
                 {/* 댓글 수정 모달창 */}
                 {
-                  modal === true ? <Commentinput/> : null
+                  modal === true && comment?.id === selected ?
+                  <>
+                    <Commentinput
+                      onChange={handleChange}
+                      value={commentText}
+                    />
+                    <button onClick={() => {
+                      handleSubmit()
+                      setModal(!modal)
+                    }}>수정 완료</button>
+                  </>
+                    : null
                 }
               </CommentContainer>
             )
@@ -125,12 +161,3 @@ export const TodoDetail = () => {
     </>
   );
 };
-
-const Commentinput = styled.textarea`
-  width: 20rem;
-  height: 10rem;
-  border: none;
-  outline: none;
-  background-color: #5f5f5f;
-  color: #fff;
-`

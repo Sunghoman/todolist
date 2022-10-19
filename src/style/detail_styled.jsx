@@ -77,3 +77,12 @@ export const CommentBtn = styled.button`
   height: 2rem;
   margin: 0 auto;
 `;
+
+export const Commentinput = styled.textarea`
+  width: 20rem;
+  height: 10rem;
+  border: none;
+  outline: none;
+  background-color: #5f5f5f;
+  color: #fff;
+`;

@@ -24,7 +24,7 @@ export const List = () => {
   useEffect(() => {
     console.log("데이터 패칭!");
     dispatch(__getTodos());
-  }, []);
+  }, [dispatch]);
 
   const handleMoveToList = () => {
     navigate("/editor", { replace: true });
@@ -47,8 +47,6 @@ export const List = () => {
                   <div>{todo.status}</div>
                   <br />
                   <div>{todo.date}</div>
-                  <br />
-                  <button onClick={() => toggleTodo(todo.id)}>완료</button>
                 </TodoListItem>
               );
             })}

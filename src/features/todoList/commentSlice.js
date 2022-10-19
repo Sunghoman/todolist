@@ -1,8 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
+
+
 const initialState = {
-  comments: [],
+  // comment null일때 comments&&, 옵셔널체이닝 등 (컴포넌트 쪽에서)
+  comments: null,
   isLoading: false,
   error: null,
 };
@@ -19,17 +23,20 @@ export const __getComments = createAsyncThunk(
   }
 );
 
+
 export const __addComment = createAsyncThunk(
   "todoList/addComment",
   async (payload, thunkAPI) => {
     try {
       await axios.post(`http://localhost:3001/comments`, payload);
+      useDispatch();
       return thunkAPI.fulfillWithValue(payload);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
   }
 );
+
 
 export const __delComment = createAsyncThunk(
   "todoList/delComment",
@@ -47,22 +54,20 @@ export const __editComment = createAsyncThunk(
   "todoList/editComment",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(
-        `http://localhost:3001/comments/${payload.id}`,
-        { desc : payload.desc }
-      );
+      const data = await axios.patch(`http://localhost:3001/comments/${payload.id}`,{ comment : payload.text });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
   }
-)
+);
 
 export const commentSlice = createSlice({
   name: "commentList",
   initialState,
   reducers: {},
   extraReducers: {
+
     // GET Comment List
     [__getComments.pending]: (state) => {
       state.isLoading = true;
@@ -108,7 +113,9 @@ export const commentSlice = createSlice({
     },
     [__editComment.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.comment.push(action.payload);
+      state.comments = state.comments.map((comment) => {
+        return (comment.id === action.payload.id) ? action.payload : comment
+      });
     },
     [__editComment.rejected]: (state, action) => {
       state.isLoading = false;
