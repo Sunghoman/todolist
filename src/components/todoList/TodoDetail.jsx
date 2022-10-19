@@ -10,7 +10,6 @@ import {
   addCommentDB,
   delPostDB,
   upPostDB,
-  upStatusDB,
 } from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -51,13 +50,13 @@ export const TodoDetail = () => {
     if (comment !== "") {
       dispatch(addCommentDB({ FK: id, comment: comment, date: date }));
     }
-
     setComment("");
   };
 
   const handleGoBack = () => {
     navigate(-1);
   };
+  
   // 👉🏻 게시글 삭제 함수 업그레이드 : 게시글 삭제했을때 페이지 뒤로가기 실행하는 함수도 같이 콜백함수로 params 라는 객체로 묶어서 넘김
   const deletePost = () => {
     const params = {
