@@ -1,23 +1,10 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate } from "../../style/detail_styled";
+import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, TodoDetailWrap, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate, Button } from "../../style/detail_styled";
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
 import { __getComments, __delComment } from "../../features/todoList/commentSlice";
-import { Navigate, useParams } from "react-router-dom";
-import {
-  TodoDetailContainer,
-  TodoDetailTitle,
-  TodoDetailBody,
-  CommentInput,
-  CommentContainer,
-  Comment,
-  TodoDetailWrap,
-  Button,
-  CommentBtn, CommentBody, CommentInfo, CommentMore, CommentDate
-} from "../../style/detail_styled";
-import styled from "styled-components";
+import { useNavigate, useParams } from "react-router-dom";
 import { addCommentDB, delPostDB } from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,13 +12,11 @@ import {
   faPenToSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 import { __getTodos } from "../../features/todoList/todoSlice";
 
 export const TodoDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { todos } = useSelector((state) => state.todoList);
 
   useEffect(() => {
     dispatch(__getComments());
@@ -60,17 +45,6 @@ export const TodoDetail = () => {
   const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
   // console.log(commentById);
 
-
-  // 이거 왜 첫 렌더링 때 빈 배열뜨냥
-
-  
-  const todoBody = todos.find((data) => data.id === parseInt(id));
-  // console.log(todoBody);
-
-  const commentById = comments.find(
-    (comment) => comment.id === todoBody && todoBody.id
-  );
-
   const { todo } = useTodo();
   const { date } = todo;
 
@@ -96,44 +70,37 @@ export const TodoDetail = () => {
   const onChange = (e) => {
     e.preventDefault();
     setComment(e.target.value);
-}
-
-  };
+  }
 
   return (
-    <TodoDetailContainer>
-      <TodoDetailWrap>
-        {/* 👉🏻 todoBody에 접근하는 프로퍼티들은 todoBody가 있을때 라는 todoBody&& 라는 조건을 옆에 달아줘야함, 아니면 에러남 */}
-        {/* 👉🏻 todoBody가 undefined면 스피너를 보여 주던가 따로 처리를 해야함. */}
-        <TodoDetailTitle>{todoBody && todoBody.title}</TodoDetailTitle>
-        <Button className="buttonset">
-          <button className="check-button">
-            <FontAwesomeIcon icon={faCircleCheck} />
-          </button>
-          <button className="edit-button">
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </button>
-          <button onClick={deletePost} className="delete-button">
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </Button>
-      </TodoDetailWrap>
-      {/* 👉🏻 마찬가지로 */}
-      <TodoDetailBody>{todoBody && todoBody.markDown}</TodoDetailBody>
-      <CommentInput
-        type="text"
-        autoComplete="off"
-        placeholder="Please enter a comment..."
-        value={comment}
-        onChange={onChange}
-      />
-      <CommentBtn
-        onClick={() => {
-          addComment()
-        }}
-      >
-        댓글 달기
-      </CommentBtn>
+    <>
+      <TodoDetailContainer>
+        <TodoDetailWrap>
+          {/* 👉🏻 todoBody에 접근하는 프로퍼티들은 todoBody가 있을때 라는 todoBody&& 라는 조건을 옆에 달아줘야함, 아니면 에러남 */}
+          {/* 👉🏻 todoBody가 undefined면 스피너를 보여 주던가 따로 처리를 해야함. */}
+          <TodoDetailTitle>{todoBody && todoBody.title}</TodoDetailTitle>
+          <Button className="buttonset">
+            <button className="check-button">
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </button>
+            <button className="edit-button">
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </button>
+            <button onClick={deletePost} className="delete-button">
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          </Button>
+        </TodoDetailWrap>
+        {/* 👉🏻 마찬가지로 */}
+        <TodoDetailBody>{todoBody && todoBody.markDown}</TodoDetailBody>
+        <CommentInput
+          type="text"
+          autoComplete="off"
+          placeholder="Please enter a comment..."
+          value={comment}
+          onChange={onChange}
+        />
+        <CommentBtn onClick={addComment}>댓글 달기</CommentBtn>
         {
           comments.map((comment) => {
             return(
@@ -152,24 +119,7 @@ export const TodoDetail = () => {
             )
           })
         }
-    </TodoDetailContainer>
+      </TodoDetailContainer>
+    </>
   );
 };
-      <CommentBtn onClick={addComment}>댓글 달기</CommentBtn>
-
-      {comments.map((comment) => {
-        return (
-          <CommentContainer key={comment.id}>
-            <Comment>{comment.comment}</Comment>
-            <span>{comment.date}</span>
-          </CommentContainer>
-        );
-      })}
-    </TodoDetailContainer>
-  );
-};
-const CommentBtn = styled.button`
-  width: 10rem;
-  height: 2rem;
-  margin: 0 auto;
-`;
