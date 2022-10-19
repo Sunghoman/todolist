@@ -2,7 +2,6 @@ import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate } from "../../style/detail_styled";
-import styled from "styled-components";
 import { addCommentDB } from "../../redux/async/post"
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
@@ -31,8 +30,6 @@ export const TodoDetail = () => {
 
 
   // 이거 왜 첫 렌더링 때 빈 배열뜨냥
-  const [,setUpdate] = useState();
-  const forceUpdate = useCallback(() => setUpdate({}), []);
 
   
   const todoBody = todos.find((data) => data.id === parseInt(id));
@@ -45,7 +42,6 @@ export const TodoDetail = () => {
   const addComment = () => {
     dispatch(addCommentDB({ FK: id, comment: comment, date: date }))
     setComment("");
-    forceUpdate();
   }
 
   const onChange = (e) => {
@@ -67,13 +63,10 @@ export const TodoDetail = () => {
       <CommentBtn
         onClick={() => {
           addComment()
-          forceUpdate()
         }}
       >
         댓글 달기
       </CommentBtn>
-      {/* { commentById } */}
-
         {
           comments.map((comment) => {
             return(

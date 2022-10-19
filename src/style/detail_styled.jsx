@@ -54,6 +54,11 @@ export const CommentMore = styled.span`
   margin-right: 10px;
   cursor: pointer;
   font-size: 0.8rem;
+  transition: all 0.3s;
+  &:hover {
+    color: whitesmoke;
+    transform: scale(1.2);
+  }
 `
 
 export const CommentDate = styled.div`

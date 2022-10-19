@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addCommentApi } from "./apis";
 import axios from "axios";
 
 const initialState = {
@@ -78,7 +77,7 @@ export const commentSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    
+
     // DELETE Comment
     [__delComment.pending]: (state) => {
       state.isLoading = true;

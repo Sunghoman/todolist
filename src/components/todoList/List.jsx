@@ -33,7 +33,7 @@ export const List = () => {
         <div>
           {todos.map((todo) => {
             return (
-                <TodoListItem key={todo.id}>
+                <TodoListItem key={todo.id} onClick={() => navigate("/list/" + todo.id)}>
                   <div>Tag: {todo.tag}</div>
                   <div>{todo.title}</div>
                   <br />
@@ -42,9 +42,6 @@ export const List = () => {
                   <div>{todo.date}</div>
                   <br />
                   <button onClick={() => toggleTodo(todo.id)}>완료</button>
-                  <button onClick={() => navigate("/list/" + todo.id)}>
-                    상세보기
-                  </button>
                 </TodoListItem>
             );
           })}
