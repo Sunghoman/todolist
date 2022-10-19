@@ -40,7 +40,7 @@ export const List = () => {
           {todos &&
             todos.map((todo) => {
               return (
-                <TodoListItem key={todo.id}>
+                <TodoListItem key={todo.id} onClick={() => navigate("/list/" + todo.id)}>
                   <div>Tag: {todo.tag}</div>
                   <div>{todo.title}</div>
                   <br />
