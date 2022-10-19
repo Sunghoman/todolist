@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TodoDetailContainer, TodoDetailTitle, TodoDetailBody, CommentInput, CommentBtn, TodoDetailWrap, CommentContainer, CommentBody, CommentInfo, CommentMore, CommentDate, Button } from "../../style/detail_styled";
 import { useTodo } from "../hooks/useTodo";
 import { useEffect } from "react";
-import { __getComments, __delComment } from "../../features/todoList/commentSlice";
+import { __getComments, __delComment, __addComment } from "../../features/todoList/commentSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { addCommentDB, delPostDB } from "../../redux/async/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,27 +13,23 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { __getTodos } from "../../features/todoList/todoSlice";
+import styled from "styled-components";
 
 export const TodoDetail = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(__getComments());
-  }, [dispatch]);
-
   // 👉🏻 새로고침 했을때 오류 났던 이유 : 새로고침을 하면 TodoDetail에는 todos가 undefined가 되기때문에 데이터 페칭을 한번 해줘야한다.
   useEffect(() => {
-    console.log("데이터 패칭!");
+    dispatch(__getComments());
     dispatch(__getTodos());
-  }, []);
+  }, [dispatch]);
 
   // 파라미터값
   const { id } = useParams();
-
   const { todos } = useSelector((state) => state.todoList);
   // console.log(todos); // 본문임
-
   const todoBody = todos && todos.find((data) => data.id === parseInt(id));
 
   // 댓글 불러오기
@@ -42,8 +38,8 @@ export const TodoDetail = () => {
 
 
   // 게시물에 해당하는 댓글 (근데 바로 안뜸)
-  const commentById = comments.filter((comment) =>  parseInt(comment.FK) === parseInt(id))
-  // console.log(commentById);
+  const commentById = comments.filter((comment) => parseInt(comment.FK) === parseInt(id))
+  console.log(commentById);
 
   const { todo } = useTodo();
   const { date } = todo;
@@ -71,6 +67,8 @@ export const TodoDetail = () => {
     e.preventDefault();
     setComment(e.target.value);
   }
+
+  const [modal, setModal] = useState(false);
 
   return (
     <>
@@ -109,12 +107,16 @@ export const TodoDetail = () => {
                   <CommentBody>{ comment.comment }</CommentBody>
                   <CommentInfo>
                     <CommentDate>{ comment.date }</CommentDate>
-                    <CommentMore>수정</CommentMore>
+                    <CommentMore onClick={() => setModal(!modal)}> {modal === true ? "완료" : "수정"}</CommentMore>
                     <CommentMore onClick={() => {
                       dispatch(__delComment(comment.id))
                     }}>삭제</CommentMore>
                   </CommentInfo>
                 </div>
+                {/* 댓글 수정 모달창 */}
+                {
+                  modal === true ? <Commentinput/> : null
+                }
               </CommentContainer>
             )
           })
@@ -123,3 +125,12 @@ export const TodoDetail = () => {
     </>
   );
 };
+
+const Commentinput = styled.textarea`
+  width: 20rem;
+  height: 10rem;
+  border: none;
+  outline: none;
+  background-color: #5f5f5f;
+  color: #fff;
+`

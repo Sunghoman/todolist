@@ -23,13 +23,13 @@ export const __addComment = createAsyncThunk(
   "todoList/addComment",
   async (payload, thunkAPI) => {
     try {
-      axios.post(`http://localhost:3001/comments`, payload);
+      await axios.post(`http://localhost:3001/comments`, payload);
       return thunkAPI.fulfillWithValue(payload);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
     }
   }
-)
+);
 
 export const __delComment = createAsyncThunk(
   "todoList/delComment",
@@ -37,20 +37,31 @@ export const __delComment = createAsyncThunk(
     try {
       await axios.delete(`http://localhost:3001/comments/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
     }
   }
 );
 
+export const __editComment = createAsyncThunk(
+  "todoList/editComment",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.patch(
+        `http://localhost:3001/comments/${payload.id}`,
+        { desc : payload.desc }
+      );
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
+)
+
 export const commentSlice = createSlice({
   name: "commentList",
   initialState,
-  reducers: {
-    addComment: (state, { payload }) => {
-      return [...state, payload];
-    }
-  },
+  reducers: {},
   extraReducers: {
     // GET Comment List
     [__getComments.pending]: (state) => {
@@ -87,6 +98,19 @@ export const commentSlice = createSlice({
       state.comments = state.comments.filter((comment) => comment.id !== action.payload);
     },
     [__delComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // EDIT Comment
+    [__editComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__editComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.comment.push(action.payload);
+    },
+    [__editComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     }

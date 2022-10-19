@@ -23,7 +23,6 @@ export const TodoDetailBody = styled(ReactMarkdown)`
   text-align: left;
   width: 40rem;
   min-height: 20rem;
-  /* background-color: tomato; */
 `;
 export const CommentInput = styled.textarea`
   resize: none;
