@@ -23,7 +23,6 @@ export const TodoDetailBody = styled(ReactMarkdown)`
   text-align: left;
   width: 40rem;
   min-height: 20rem;
-  /* background-color: tomato; */
 `;
 export const CommentInput = styled.textarea`
   resize: none;
@@ -77,4 +76,13 @@ export const CommentBtn = styled.button`
   width: 10rem;
   height: 2rem;
   margin: 0 auto;
+`;
+
+export const Commentinput = styled.textarea`
+  width: 20rem;
+  height: 10rem;
+  border: none;
+  outline: none;
+  background-color: #5f5f5f;
+  color: #fff;
 `;

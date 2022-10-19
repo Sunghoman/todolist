@@ -10,36 +10,75 @@
       "id": 4
     },
     {
-      "title": "123",
-      "markDown": "새 글",
-      "tag": "spring",
+      "id": 3,
+      "title": "리덕스 오류 질문입니다.",
+      "markDown": "이게 왜 안될까요 ㅠㅠ",
       "status": "Working",
       "date": "2022-10-19",
       "comment": [],
       "id": 5
     },
     {
-      "title": "수정해야되는데..",
-      "markDown": "# 수정 어떻게 하지?",
+      "title": "에러가 떠ㅏㅅ어요ㅗ",
+      "markDown": "에러가 떳어요\n\n# 마크다운이 됩니다\n## 더 작은 글씨!\n### 더더 작은 글씨!\n\n***\n\n```\nconsole.log(asd)\n```",
       "tag": "spring",
       "status": "Working",
-      "date": "2022-10-19",
+      "date": "2022-10-20",
       "comment": [],
-      "id": 6
+      "id": 4
+    },
+    {
+      "title": "ㅁㄴㅇㅁㄴㅇ",
+      "markDown": "ㅁㄴㅇㅁㄴㅇㅁㄴ",
+      "tag": "",
+      "status": "Working",
+      "date": "2022-10-20",
+      "comment": [],
+      "id": 5
     }
   ],
   "comments": [
     {
       "FK": "1",
-      "comment": "123123123",
-      "date": "2022-10-18",
-      "id": 6
+      "comment": "성공하면 백만원",
+      "date": "2022-10-19",
+      "id": 20
     },
     {
-      "FK": "2",
-      "comment": "asdfadsfsadfsadf",
-      "date": "2022-10-18",
-      "id": 7
+      "FK": "1",
+      "comment": "되면 백만원",
+      "date": "2022-10-19",
+      "id": 25
+    },
+    {
+      "FK": "3",
+      "comment": "123",
+      "date": "2022-10-20",
+      "id": 26
+    },
+    {
+      "FK": "3",
+      "comment": "ㅁㄴㅇㄹㅁㄴㅇㄹ",
+      "date": "2022-10-20",
+      "id": 27
+    },
+    {
+      "FK": "3",
+      "comment": "asd",
+      "date": "2022-10-20",
+      "id": 28
+    },
+    {
+      "FK": "4",
+      "comment": "야허",
+      "date": "2022-10-20",
+      "id": 29
+    },
+    {
+      "FK": "6",
+      "comment": "1223",
+      "date": "2022-10-20",
+      "id": 30
     }
   ]
 }
