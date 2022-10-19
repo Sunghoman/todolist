@@ -19,8 +19,11 @@ export const upPostAPI = async (id, edit) => {
   return response.data;
 };
 
+// 댓글 CRUD API
 export const addCommentApi = (comment) => {
   axios.post(`${BASE_URL}/comments`, comment);
 };
 
-// 그냥 게시물 덩어리에 comments 추가해서 post 하기
+export const delCommentApi = (id) => {
+  axios.delete(`${BASE_URL}/comments/${id}`);
+}
