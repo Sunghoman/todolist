@@ -58,10 +58,10 @@ export const todoSlice = createSlice({
     },
     [delPostDB.fulfilled]: (state, action) => {
       state.isLoading = false;
-      // state.todos = action.payload;
-      return state.todos.filter((todo) => {
-        return todo.id !== action.payload;
-      });
+      // 👉🏻 삭제 로직
+      state.todos = state.todos.filter(
+        (todo) => todo.id !== Number(action.payload)
+      );
     },
     [delPostDB.rejected]: (state, action) => {
       state.isLoading = false;
@@ -74,6 +74,7 @@ export const todoSlice = createSlice({
     [__getTodos.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.todos = action.payload;
+      console.log("할당 완료!");
     },
     [__getTodos.rejected]: (state, action) => {
       state.isLoading = false;

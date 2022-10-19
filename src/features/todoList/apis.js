@@ -14,6 +14,10 @@ export const delPostAPI = async (id) => {
   const response = await axios.delete(`${BASE_URL}/editor/${id}`);
   return response.data;
 };
+export const upPostAPI = async (id, edit) => {
+  const response = await axios.patch(`${BASE_URL}/editor/${id}`, edit);
+  return response.data;
+};
 
 export const addCommentApi = (comment) => {
   axios.post(`${BASE_URL}/comments`, comment);
