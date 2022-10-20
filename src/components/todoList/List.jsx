@@ -1,96 +1,58 @@
-import { useSelector } from "react-redux";
-import { TodoBody } from "../../style/list_styled";
-import { useChangeTodo } from "../hooks/useChangeTodo";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  MainLink,
+  Output,
+  TodoAddButton,
+  TodoListBody,
+  TodoListItem,
+} from "../../style/list_styled";
+import { useNavigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+// import axios from "axios";
+import { __getTodos } from "../../features/todoList/todoSlice";
 
 export const List = () => {
-  const todoList = useSelector((state) => state.todoList);
-  const { removeTodo, toggleTodo, restoreTodo, cencleTodo, deleteAllTodo } =
-    useChangeTodo();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { todos } = useSelector((state) => state.todoList);
+  // console.log("할일 목록",todos);
+
+  // 데이터 불러옴.
+  useEffect(() => {
+    console.log("데이터 패칭!");
+    dispatch(__getTodos());
+  }, [dispatch]);
+
+  const handleMoveToList = () => {
+    navigate("/editor", { replace: true });
+  };
+
   return (
-    <TodoBody>
-      <div>
-        <hr />
-        <h4>해야할 일</h4>
-        <hr />
-        <ul>
-          {todoList.map((todo) => {
-            if (todo.status === "Working") {
-              console.log(todo);
+    <>
+      <TodoAddButton onClick={handleMoveToList}>
+        <MainLink>새 글 작성하기</MainLink>
+      </TodoAddButton>
+      <TodoListBody>
+        <div>
+          {todos &&
+            todos.map((todo) => {
               return (
-                <div key={todo.id}>
-                  <li>ID: {todo.id}</li>
-                  <li>Tag: {todo.tag}</li>
-                  <li>Title: {todo.title}</li>
-                  <li>Body: {todo.body}</li>
-                  <li>Date: {todo.date}</li>
-
-                  <button onClick={() => removeTodo(todo.id)}>삭제</button>
-                  <button onClick={() => toggleTodo(todo.id)}>완료</button>
-
-                  <hr />
-                </div>
+                <TodoListItem key={todo.id} onClick={() => navigate("/list/" + todo.id)}>
+                  <div>Tag: {todo.tag}</div>
+                  <div>{todo.title}</div>
+                  <br />
+                  <div>{todo.status}</div>
+                  <br />
+                  <div>{todo.date}</div>
+                </TodoListItem>
               );
-            } else {
-              return null;
-            }
-          })}
-        </ul>
-      </div>
-      <div>
-        <hr />
-        <h4>완료한 일</h4>
-        <ul>
-          {todoList.map((todo) => {
-            if (todo.status === "Done") {
-              return (
-                <div key={todo.id}>
-                  <li>ID: {todo.id}</li>
-                  <li>Tag: {todo.tag}</li>
-                  <li>Title: {todo.title}</li>
-                  <li>Body: {todo.body}</li>
-                  <li>Date: {todo.date}</li>
-
-                  <button onClick={() => removeTodo(todo.id)}>삭제</button>
-                  <button onClick={() => cencleTodo(todo.id)}>취소</button>
-
-                  <hr />
-                </div>
-              );
-            } else {
-              return null;
-            }
-          })}
-        </ul>
-      </div>
-      <div>
-        <hr />
-        <h4>
-          휴지통
-          <button onClick={() => deleteAllTodo()}>전체 삭제</button>
-          <hr />
-        </h4>
-        <ul>
-          {todoList.map((todo) => {
-            if (todo.status === "Trash") {
-              return (
-                <div key={todo.id}>
-                  <li>ID: {todo.id}</li>
-                  <li>Tag: {todo.tag}</li>
-                  <li>Title: {todo.title}</li>
-                  <li>Body: {todo.body}</li>
-                  <li>Date: {todo.date}</li>
-
-                  <button onClick={() => restoreTodo(todo.id)}>복원</button>
-
-                  <hr />
-                </div>
-              );
-            } else {
-              return null;
-            }
-          })}
-        </ul>
-      </div>
-    </TodoBody>
+            })}
+        </div>
+      </TodoListBody>
+      <Output className="list-output">
+        <Outlet />
+      </Output>
+    </>
   );
 };

@@ -1,59 +1,109 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { delPostDB, getPostOne, upPostDB } from "../../redux/async/post";
+
+const initialState = {
+  todo: null,
+  todos: [],
+  isLoading: false,
+  error: null,
+};
+
+export const __getTodos = createAsyncThunk(
+  "todoList/getTodos",
+  async (payload, thunkAPI) => {
+    try {
+      const todos = await axios.get("http://localhost:3001/editor");
+      return thunkAPI.fulfillWithValue(todos.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const todoSlice = createSlice({
   name: "todoList",
-  initialState: [
-    {
-      id: 1,
-      title: "리덕스 오류 질문입니다.",
-      body: "이게 왜 안될까요 ㅠㅠ",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "react",
+  initialState,
+  reducers: {},
+  extraReducers: {
+    // 하나의 정보 가져오기
+    [getPostOne.pending]: (state) => {
+      state.isLoading = true;
     },
-    {
-      id: 2,
-      title: "스프링 질문티비",
-      body: "정말 너무 어려워 티비",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "spring",
+    [getPostOne.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todo = action.payload;
+      console.log(action.payload);
     },
-    {
-      id: 3,
-      title: "리액트 console.log()가 안찍혀요",
-      body: "야옹 야옹 전 이제 사파리로 개발해야해요",
-      status: "Working",
-      date: "2022-10-13",
-      tag: "react",
+    [getPostOne.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
-  ],
-  reducers: {
-    addTodo: (state, { payload }) => {
-      return [...state, payload];
+
+    // 포스트 수정하기
+    [upPostDB.pending]: (state) => {
+      state.isLoading = true;
     },
-    removeTodo: (state, { payload }) => {
-      return state.map((todo) =>
-        todo.id === payload ? { ...todo, status: "Trash" } : todo
+    [upPostDB.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todos = state.todos.map((todo) => {
+        console.log(action.payload.edit.title);
+        if (todo.id === +action.payload.id) {
+          console.log("같은 경우");
+          return {
+            ...todo,
+            title: action.payload.edit.title,
+            markDown: action.payload.edit.markDown,
+          };
+        } else {
+          console.log("다른 경우");
+          return { ...todo };
+        }
+      });
+      console.log(action);
+    },
+    [upPostDB.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    // 삭제하기
+    [delPostDB.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [delPostDB.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      // 👉🏻 삭제 로직
+      state.todos = state.todos.filter(
+        (todo) => todo.id !== Number(action.payload)
       );
     },
-    toggleTodo: (state, { payload }) => {
-      return state.map((todo) =>
-        todo.id === payload ? { ...todo, status: "Done" } : todo
-      );
+    [delPostDB.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
-    restoreTodo: (state, { payload }) => {
-      return state.map((todo) =>
-        todo.id === payload ? { ...todo, status: "Working" } : todo
-      );
+
+    [__getTodos.pending]: (state) => {
+      state.isLoading = true;
     },
-    cencleTodo: (state, { payload }) => {
-      return state.map((todo) =>
-        todo.id === payload ? { ...todo, status: "Working" } : todo
-      );
+    [__getTodos.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todos = action.payload;
+      console.log("할당 완료!");
     },
-    deleteAllTodo: (state) => {
-      return state.filter((todo) => todo.status !== "Trash");
+    [__getTodos.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });
+
+export const {
+  addTodo,
+  removeTodo,
+  toggleTodo,
+  restoreTodo,
+  cancelTodo,
+  deleteAllTodo,
+} = todoSlice.actions;
+export default todoSlice.reducer;

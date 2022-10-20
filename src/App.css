@@ -1,0 +1,271 @@
+* {
+  font-family: "Gowun Batang", serif !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  font-family: "Gowun Batang", serif;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #15202b;
+}
+button {
+  cursor: pointer;
+}
+#root {
+  height: 100%;
+}
+.App {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+#dark {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+#light {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#dark .mainFront {
+  background-color: #f7f9f9da;
+}
+#light .mainFront {
+  background-color: #15202bda;
+}
+.switch {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.switch label {
+  margin: 10px;
+}
+#light .switch label {
+  color: #15202b;
+}
+#dark .switch label {
+  color: #f7f9f9;
+}
+.TodoList {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+.buttonSet button {
+  border: none;
+  margin: 30px 5px 0px 5px;
+}
+.button {
+  border: none;
+  margin-left: 10px;
+}
+#light .button {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#dark .button {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+#light .buttonSet button {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#dark .buttonSet button {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+#dark {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+#light {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#dark .mainFront {
+  background-color: #f7f9f9da;
+}
+#light .mainFront {
+  background-color: #15202bda;
+}
+.switch {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.switch label {
+  margin: 10px;
+}
+#light .switch label {
+  color: #15202b;
+}
+#dark .switch label {
+  color: #f7f9f9;
+}
+.TodoList {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+.buttonSet button {
+  border: none;
+  margin-top: 30px;
+}
+#light .buttonSet button {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#dark .buttonSet button {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.editer-wrap {
+  max-width: 1200px;
+  width: 98%;
+}
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+#light .textarea {
+  width: 47%;
+  height: 540px;
+  background-color: #15202b;
+  color: #f7f9f9;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  resize: none;
+}
+#light .textarea::-webkit-scrollbar {
+  width: 5px;
+}
+#light .textarea::-webkit-scrollbar-thumb {
+  height: 70%; /* 스크롤바의 길이 */
+  background: #9e9e9e; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+#light .textarea::-webkit-scrollbar-track {
+  background: #15202b; /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
+}
+#light .output {
+  width: 47%;
+  height: 540px;
+  background-color: #222;
+  color: #f7f9f9;
+  margin-left: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px;
+  overflow-y: auto;
+}
+#light .output::-webkit-scrollbar {
+  width: 5px;
+}
+#light .output::-webkit-scrollbar-thumb {
+  height: 70%; /* 스크롤바의 길이 */
+  background: #9e9e9e; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+#light .output::-webkit-scrollbar-track {
+  background: #222; /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
+}
+#dark .textarea {
+  width: 47%;
+  height: 540px;
+  background-color: #f7f9f9;
+  color: #15202b;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  resize: none;
+}
+#dark .textarea::-webkit-scrollbar {
+  width: 5px;
+}
+#dark .textarea::-webkit-scrollbar-thumb {
+  height: 70%; /* 스크롤바의 길이 */
+  background: #9e9e9e; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+#dark .textarea::-webkit-scrollbar-track {
+  background: #f7f9f9; /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
+}
+#dark .output {
+  width: 47%;
+  height: 540px;
+  background-color: #222;
+  color: #f7f9f9;
+  margin-left: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px;
+  overflow-y: auto;
+}
+#dark .output::-webkit-scrollbar {
+  width: 5px;
+}
+#dark .output::-webkit-scrollbar-thumb {
+  height: 70%; /* 스크롤바의 길이 */
+  background: #9e9e9e; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+#dark .output::-webkit-scrollbar-track {
+  background: #222; /*스크롤바 뒷 배경 색상*/
+  border-radius: 10px;
+}
+#dark .list-output {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
+#light .list-output {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+.buttonset button {
+  margin: 20px 10px 0px 10px;
+  border: none;
+  font-size: 20px;
+}
+#light .buttonset button {
+  background-color: #15202b;
+  color: #f7f9f9;
+}
+#dark .buttonset button {
+  background-color: #f7f9f9;
+  color: #15202b;
+}
