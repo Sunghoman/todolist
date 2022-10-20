@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const initialState = {
   // comment null일때 comments&&, 옵셔널체이닝 등 (컴포넌트 쪽에서)
@@ -15,7 +14,7 @@ export const __getComments = createAsyncThunk(
   "todoList/getComments",
   async (payload, thunkAPI) => {
     try {
-      const comments = await axios.get("http://localhost:3001/comments");
+      const comments = await axios.get(`${BASE_URL}/comments`);
       return thunkAPI.fulfillWithValue(comments.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -28,8 +27,7 @@ export const __addComment = createAsyncThunk(
   "todoList/addComment",
   async (payload, thunkAPI) => {
     try {
-      await axios.post(`http://localhost:3001/comments`, payload);
-      thunkAPI.dispatch(__getComments())
+      await axios.post(`${BASE_URL}/comments`, payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
@@ -41,7 +39,7 @@ export const __delComment = createAsyncThunk(
   "todoList/delComment",
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`http://localhost:3001/comments/${payload}`);
+      await axios.delete(`${BASE_URL}/comments/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
@@ -53,7 +51,7 @@ export const __editComment = createAsyncThunk(
   "todoList/editComment",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`http://localhost:3001/comments/${payload.id}`,{ comment : payload.text });
+      const data = await axios.patch(`${BASE_URL}/${payload.id}`,{ comment : payload.text });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);

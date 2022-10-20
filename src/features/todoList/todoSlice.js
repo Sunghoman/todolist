@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { delPostDB, getPostOne, upPostDB } from "../../redux/async/post";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const initialState = {
   todo: null,
   todos: [],
@@ -13,7 +15,7 @@ export const __getTodos = createAsyncThunk(
   "todoList/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const todos = await axios.get("http://localhost:3001/editor");
+      const todos = await axios.get(`${BASE_URL}/editor`);
       return thunkAPI.fulfillWithValue(todos.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
