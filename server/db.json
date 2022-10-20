@@ -1,37 +1,52 @@
 {
   "editor": [
     {
-      "title": "이 모든 구성이",
-      "markDown": "삼만 구천 팔백원!\n\n무야호",
-      "tag": "spring",
+      "title": "리액트 질문",
+      "markDown": "# 질문 있습니다\n\n## 잘 모르겠습니다\n\n### 그냥 써보는 중 입니다\n\n하하하하하하하하",
+      "tag": "react",
       "status": "Working",
       "date": "2022-10-20",
       "comment": [],
-      "id": 2,
-      "body": "이 모든 구성이"
-    },
-    {
-      "title": "약호",
-      "markDown": "약호\n\nㅈ짜라빠빠",
-      "tag": "spring",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 3,
-      "body": "약호"
+      "id": 1,
+      "body": "리액트 질문"
     }
   ],
   "comments": [
     {
-      "FK": "1",
-      "comment": "댓글!",
-      "date": "2022-10-20",
-      "id": 1
+      "FK": "2",
+      "comment": "asdfadsfsadfsadf",
+      "date": "2022-10-18",
+      "id": 7
     },
     {
-      "FK": "3",
-      "comment": "해야할 일",
+      "FK": "4",
+      "comment": "오오",
       "date": "2022-10-20",
+      "id": 8
+    },
+    {
+      "FK": "7",
+      "comment": "흠흠",
+      "date": "2022-10-20",
+      "id": 10
+    },
+    {
+      "FK": "7",
+      "comment": "댓글 달기",
+      "date": "2022-10-20",
+      "id": 11
+    },
+    {
+      "FK": "1",
+      "comment": "하하하하하",
+      "date": "2022-10-20",
+      "id": 12
+    },
+    {
+      "FK": "1",
+      "comment": "호호호호호",
+      "date": "2022-10-20",
+<<<<<<< HEAD
       "id": 2
     },
     {
@@ -75,6 +90,9 @@
       "comment": "ㅁㄴㅇㄹㄴㅁㄹ",
       "date": "2022-10-20",
       "id": 9
+=======
+      "id": 13
+>>>>>>> seoungeun
     }
   ]
 }
