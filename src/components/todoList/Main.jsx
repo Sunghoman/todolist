@@ -10,8 +10,8 @@ import {
   MainLinkOne,
   MainLinkTwo,
 } from "../../style/main_styled";
-
 export const Main = () => {
+
   return (
     <MainWrap>
       <MainPage>

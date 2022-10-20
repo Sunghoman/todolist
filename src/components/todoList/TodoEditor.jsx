@@ -14,7 +14,7 @@ const TodoEditor = () => {
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
     navigate("/list");
-    console.log(markDown);
+    // console.log(markDown);
     dispatch(addPostDB({ title, markDown, tag, status, date, comment }));
   };
   const { todo, getInputs, handleChange } = useTodo();
