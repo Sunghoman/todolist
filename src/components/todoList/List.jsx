@@ -8,7 +8,6 @@ import {
 } from "../../style/list_styled";
 import { useNavigate, Outlet } from "react-router-dom";
 import { useEffect } from "react";
-// import axios from "axios";
 import { __getTodos } from "../../features/todoList/todoSlice";
 
 export const List = () => {
@@ -16,7 +15,6 @@ export const List = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todoList);
-  // console.log("할일 목록",todos);
 
   // 데이터 불러옴.
   useEffect(() => {
