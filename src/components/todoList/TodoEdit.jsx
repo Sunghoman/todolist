@@ -59,13 +59,13 @@ const TodoEdit = () => {
     dispatch(upPostDB(params));
   };
   useEffect(() => {
-    console.log("데이터 패칭~~~~~~~~");
+    // console.log("데이터 패칭~~~~~~~~");
     dispatch(getPostOne(id));
   }, [dispatch, id]);
 
   // { todo: post } 이름이 동일할 경우 : 를 사용하여 새로운 이름을 만들어줄 수 있음
   const { todo: post } = useSelector((state) => state.todoList);
-  console.log(post);
+  // console.log(post);
   return (
     <div>
       <div className="wrap">
