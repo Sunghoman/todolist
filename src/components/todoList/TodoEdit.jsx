@@ -15,12 +15,10 @@ const TodoEdit = () => {
   const [markDown, setMarkdown] = useState();
   const addTodoEditer = () => {
     navigate("/list");
-    console.log(markDown);
     dispatch(addPostDB({ markDown, tag, status, date, comment }));
   };
   const { todo, handleChange } = useTodo();
   const { title, tag, status, date } = todo;
-  // console.log(todo)
 
   const [body, setBody] = useState("");
   const [mark, setMark] = useState("");
@@ -38,10 +36,6 @@ const TodoEdit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // const updatePost = () => {
-  //   dispatch(upPostDB({ id, edit: { title, markDown } }));
-  //   navigate(-1);
-  // };s
 
   const handleGoBack = () => {
     navigate(-1);
@@ -59,13 +53,12 @@ const TodoEdit = () => {
     dispatch(upPostDB(params));
   };
   useEffect(() => {
-    // console.log("데이터 패칭~~~~~~~~");
     dispatch(getPostOne(id));
   }, [dispatch, id]);
 
   // { todo: post } 이름이 동일할 경우 : 를 사용하여 새로운 이름을 만들어줄 수 있음
   const { todo: post } = useSelector((state) => state.todoList);
-  // console.log(post);
+
   return (
     <div>
       <div className="wrap">
