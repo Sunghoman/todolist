@@ -64,7 +64,7 @@ export const MainText = styled.p`
 
 export const MainLinkOne = styled(Link)`
   position: absolute;
-  margin: 40px 0px 30px 0px;
+  margin: 50px 0px 30px 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
@@ -79,7 +79,7 @@ export const MainLinkOne = styled(Link)`
 `;
 export const MainLinkTwo = styled(Link)`
   position: absolute;
-  margin: 50px 0px 30px 0px;
+  margin: 120px 0px 30px 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;

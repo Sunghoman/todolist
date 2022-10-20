@@ -29,14 +29,13 @@ export const __addComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       await axios.post(`http://localhost:3001/comments`, payload);
-      useDispatch();
+      thunkAPI.dispatch(__getComments())
       return thunkAPI.fulfillWithValue(payload);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
   }
 );
-
 
 export const __delComment = createAsyncThunk(
   "todoList/delComment",

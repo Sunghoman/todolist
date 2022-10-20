@@ -28,16 +28,14 @@ export const Main = () => {
           </MainBack>
 
           <MainFront className="mainFront">
-            <MainTitle>새로운 글 작성하기</MainTitle>
+            <MainTitle>에러를 만나면</MainTitle>
             <MainText>
-              React, Spring, Git 에러를 만나면
-              <br />
               이 곳에서 공유하고, 해결 방법을 찾아보세요
               <br />
               당신의 고민의 흔적이 다른 사람들을 도울 수 있읍니다.
               <br />
             </MainText>
-            <MainLinkTwo to="/editor">이 버튼 옮겨야함(새 글 작성)</MainLinkTwo>
+            <MainLinkTwo to="/editor">새로운 글 쓰기</MainLinkTwo>
           </MainFront>
         </MainContainer>
       </MainPage>

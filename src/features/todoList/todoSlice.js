@@ -26,24 +26,6 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // [upPostDB.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [upPostDB.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.todos = state.todos.map((todo) => {
-    //     if (todo.id === action.payload.id) {
-    //       return (todo.status = "Done");
-    //     } else {
-    //       return action.payload;
-    //     }
-    //   });
-    // },
-    // [upPostDB.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-
     // 하나의 정보 가져오기
     [getPostOne.pending]: (state) => {
       state.isLoading = true;
@@ -115,6 +97,7 @@ export const todoSlice = createSlice({
     },
   },
 });
+
 export const {
   addTodo,
   removeTodo,
