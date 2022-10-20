@@ -1,143 +1,21 @@
 {
   "editor": [
     {
-      "title": "리액트 질문",
-      "markDown": "# 질문 있습니다\n\n## 잘 모르겠습니다\n\n### 그냥 써보는 중 입니다\n\n하하하하하하하하",
-      "tag": "react",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 2,
-      "body": "이 모든 구성이"
-    },
-    {
-      "title": "약호",
-      "markDown": "약호\n\nㅈ짜라빠빠",
-      "tag": "spring",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 3,
-      "body": "약호"
-    },
-    {
       "title": "test",
       "markDown": "test",
       "tag": "",
       "status": "Working",
       "date": "2022-10-20",
       "comment": [],
-      "id": 4
-    },
-    {
-      "title": "되면",
-      "markDown": "백만원",
-      "tag": "spring",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 5
-    },
-    {
-      "title": "test",
-      "markDown": "test",
-      "tag": "",
-      "status": "Working",
-      "date": "2022-10-20",
-      "comment": [],
-      "id": 6
+      "id": 1
     }
   ],
   "comments": [
     {
-      "FK": "2",
-      "comment": "asdfadsfsadfsadf",
-      "date": "2022-10-18",
-      "id": 7
-    },
-    {
-      "FK": "4",
-      "comment": "오오",
-      "date": "2022-10-20",
-      "id": 8
-    },
-    {
-      "FK": "7",
-      "comment": "흠흠",
-      "date": "2022-10-20",
-      "id": 10
-    },
-    {
-      "FK": "7",
-      "comment": "댓글 달기",
-      "date": "2022-10-20",
-      "id": 11
-    },
-    {
       "FK": "1",
-      "comment": "하하하하하",
-      "date": "2022-10-20",
-      "id": 12
-    },
-    {
-      "FK": "1",
-      "comment": "호호호호호",
-      "date": "2022-10-20",
-      "id": 13
-    },
-    {
-      "FK": "3",
-      "comment": "sadfdsf",
-      "date": "2022-10-20",
-      "id": 10
-    },
-    {
-      "FK": "3",
-      "comment": "13123",
-      "date": "2022-10-20",
-      "id": 11
-    },
-    {
-      "FK": "3",
-      "comment": "1223",
-      "date": "2022-10-20",
-      "id": 12
-    },
-    {
-      "FK": "3",
       "comment": "asd",
       "date": "2022-10-20",
-      "id": 13
-    },
-    {
-      "FK": "3",
-      "comment": "13123",
-      "date": "2022-10-20",
-      "id": 14
-    },
-    {
-      "FK": "4",
-      "comment": "123",
-      "date": "2022-10-20",
-      "id": 15
-    },
-    {
-      "FK": "3",
-      "comment": "13",
-      "date": "2022-10-20",
-      "id": 16
-    },
-    {
-      "FK": "3",
-      "comment": "123",
-      "date": "2022-10-20",
-      "id": 17
-    },
-    {
-      "FK": "5",
-      "comment": "사실 천만원",
-      "date": "2022-10-20",
-      "id": 18
+      "id": 1
     }
   ]
 }

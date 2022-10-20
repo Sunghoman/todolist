@@ -51,7 +51,7 @@ export const __editComment = createAsyncThunk(
   "todoList/editComment",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`${BASE_URL}/${payload.id}`,{ comment : payload.text });
+      const data = await axios.patch(`${BASE_URL}/comments/${payload.id}`, { comment : payload.text });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
